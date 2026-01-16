@@ -306,52 +306,19 @@
     </section>
 
     <section id="team" class="py-20 bg-white border-t border-gray-200">
-        <div class="container mx-auto px-6">
-            <h3 class="font-header text-4xl md:text-5xl font-bold uppercase text-brand-black text-center mb-16">
+        <div class="container mx-auto px-2 md:px-6"> <h3 class="font-header text-4xl md:text-5xl font-bold uppercase text-brand-black text-center mb-10">
                 Тренерский Штаб
             </h3>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
-                    <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
-                        <div class="img-box bg-gray-200">
-                            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
-                            <span>Нет фото: images/coach1.jpg</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Главный тренер</span>
-                        <h4 class="font-header text-2xl uppercase mt-1">Абугалиев Чингиз</h4>
-                    </div>
-                </div>
-
-                <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
-                    <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach2.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
-                        <div class="img-box bg-gray-200">
-                            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
-                            <span>Нет фото: images/coach2.jpg</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Ассистент</span>
-                        <h4 class="font-header text-2xl uppercase mt-1">Умеркулов Имран</h4>
-                    </div>
-                </div>
-
-                <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
-                    <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach3.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
-                        <div class="img-box bg-gray-200">
-                            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
-                            <span>Нет фото: images/coach3.jpg</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-green-600 uppercase tracking-widest">Вратари</span>
-                        <h4 class="font-header text-2xl uppercase mt-1">Цыгановкин Роман</h4>
-                    </div>
+            <div class="relative w-full rounded-2xl overflow-hidden shadow-xl" data-aos="fade-up">
+                <img src="images/team_full.jpg" 
+                     onerror="this.src='team_full.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                     class="w-full h-auto object-contain block" 
+                     alt="Тренерский штаб">
+                
+                <div class="img-box bg-gray-100 flex flex-col items-center justify-center min-h-[300px]" style="display:none">
+                    <i class="fas fa-users text-4xl text-gray-300 mb-3"></i>
+                    <span class="text-red-500 font-bold">Загрузите фото: images/team_full.jpg</span>
                 </div>
             </div>
         </div>
@@ -418,12 +385,12 @@
         <div class="container mx-auto px-6 text-center">
             <div class="flex flex-col items-center gap-4 mb-8">
                 <div class="w-16 h-16 relative">
-     <img src="images/logo.png" 
-          onerror="this.src='logo.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
-          class="w-full h-full object-contain" 
-          alt="Logo">
-     <div class="img-box bg-transparent border-none text-white" style="display:none;"><i class="fas fa-shield-alt text-2xl"></i></div>
-</div>
+                     <img src="images/logo.png" 
+                          onerror="this.src='logo.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                          class="w-full h-full object-contain" 
+                          alt="Logo">
+                     <div class="img-box bg-transparent border-none text-white" style="display:none;"><i class="fas fa-shield-alt text-2xl"></i></div>
+                </div>
                 <span class="font-header text-2xl uppercase tracking-widest">Astana Jas</span>
             </div>
             <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">&copy; 2025 Astana Jas. Designed by Anuken</p>
