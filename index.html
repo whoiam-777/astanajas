@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASTANA JAS | Football School</title>
+    <title>ASTANA JAS | Футбольная Школа</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,18 +15,16 @@
             theme: {
                 extend: {
                     fontFamily: { 
-                        sport: ['"Russo One"', 'sans-serif'], 
-                        body: ['"Roboto"', 'sans-serif'] 
+                        title: ['"Montserrat"', 'sans-serif'], 
+                        body: ['"Open Sans"', 'sans-serif'] 
                     },
                     colors: { 
-                        club: {
-                            dark: '#111111',   
-                            primary: '#FFD700', 
-                            gray: '#1F1F1F'
+                        brand: {
+                            yellow: '#FFD700', /* Ваш фирменный желтый */
+                            black: '#111111',  /* Черный фон */
+                            gray: '#F5F5F5',   /* Светлый фон блоков */
+                            darkgray: '#222222'
                         }
-                    },
-                    skew: {
-                        '12': '12deg',
                     }
                 }
             }
@@ -34,291 +32,378 @@
     </script>
 
     <style>
-        body { background-color: #111111; color: #FFFFFF; overflow-x: hidden; }
+        body { font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, .font-title { font-family: 'Montserrat', sans-serif; }
         
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111111; }
-        ::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 4px; }
+        /* Стилизация скроллбара */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 5px; }
 
-        .skew-box { transform: skewX(-12deg); }
-        .unskew { transform: skewX(12deg); }
-        
-        .btn-sport {
-            position: relative; overflow: hidden; transform: skewX(-12deg);
+        /* Эффект кнопок как на референсе */
+        .btn-main {
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
-        .btn-sport:hover { transform: skewX(-12deg) translateY(-2px); box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3); }
-        
-        #mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
-        #mobile-menu.open { transform: translateX(0); }
-        
-        .coach-card {
-            background: linear-gradient(145deg, #1F1F1F 0%, #111111 100%);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            transition: 0.3s;
-        }
-        .coach-card:hover { border-color: #FFD700; transform: translateY(-10px); box-shadow: 0 10px 30px -10px rgba(255, 215, 0, 0.2); }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4); }
 
-        .bg-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        /* Карточки цен */
+        .price-card {
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+        .price-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Аккордеон FAQ */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: sweep .5s ease-in-out; }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
         }
     </style>
 </head>
-<body class="font-body antialiased">
+<body class="bg-white text-gray-800">
 
-    <div id="preloader" class="fixed inset-0 z-[100] bg-club-dark flex items-center justify-center transition-opacity duration-500">
-        <div class="flex flex-col items-center">
-            <i class="fas fa-futbol text-6xl text-club-primary animate-spin mb-4"></i>
-            <span class="font-sport text-2xl uppercase tracking-widest text-club-primary">ASTANA JAS</span>
+    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-black flex items-center justify-center transition-opacity duration-500">
+        <div class="text-center">
+            <i class="fas fa-futbol text-brand-yellow text-5xl animate-bounce mb-4"></i>
+            <h2 class="text-white text-2xl font-bold font-title tracking-widest">ASTANA JAS</h2>
         </div>
     </div>
 
-    <header class="fixed w-full top-0 z-50 bg-club-dark/95 backdrop-blur border-b border-club-primary/20">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 bg-club-primary skew-box flex items-center justify-center overflow-hidden border-2 border-white">
-                    <img src="images/logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/185/185600.png'" class="w-8 h-8 object-contain unskew" alt="Logo">
+    <header class="fixed w-full top-0 z-50 bg-white shadow-md">
+        <div class="hidden md:block bg-brand-black text-white text-xs py-2">
+            <div class="container mx-auto px-6 flex justify-between items-center">
+                <div class="flex gap-6">
+                    <span><i class="fas fa-map-marker-alt text-brand-yellow mr-2"></i> Астана, ул. Жәнібекова / ул. Е-10</span>
+                    <span><i class="far fa-clock text-brand-yellow mr-2"></i> Пн-Вс: 09:00 - 21:00</span>
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-sport text-xl leading-none uppercase tracking-wider text-white group-hover:text-club-primary transition">ASTANA JAS</span>
-                    <span class="text-[10px] text-club-primary font-bold uppercase tracking-widest">Since 2025</span>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-brand-yellow"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-brand-yellow"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <img src="images/logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/185/185600.png'" class="w-12 h-12 object-contain" alt="Logo">
+                <div class="leading-tight">
+                    <div class="font-title font-bold text-xl text-brand-black uppercase">Astana Jas</div>
+                    <div class="text-[10px] text-gray-500 font-bold tracking-widest uppercase">Football School</div>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex gap-8 font-sport uppercase text-sm tracking-wide">
-                <a href="#about" class="hover:text-club-primary transition">О школе</a>
-                <a href="#coaches" class="hover:text-club-primary transition">Тренеры</a>
-                <a href="#locations" class="hover:text-club-primary transition">Локации</a>
-                <a href="#partners" class="hover:text-club-primary transition">Партнеры</a>
+            <nav class="hidden lg:flex gap-8 font-title text-sm font-bold uppercase text-gray-700">
+                <a href="#about" class="hover:text-brand-yellow transition">О школе</a>
+                <a href="#programs" class="hover:text-brand-yellow transition">Программы</a>
+                <a href="#coaches" class="hover:text-brand-yellow transition">Тренеры</a>
+                <a href="#contacts" class="hover:text-brand-yellow transition">Контакты</a>
             </nav>
 
-            <div class="flex items-center gap-6">
-                <a href="tel:+77019744464" class="hidden md:flex flex-col items-end group">
-                    <span class="font-sport text-lg group-hover:text-club-primary transition">+7 701 974 44 64</span>
-                    <span class="text-[10px] text-gray-400 uppercase tracking-wider">Менеджер Руслан</span>
-                </a>
-                <button onclick="toggleMenu()" class="lg:hidden text-2xl text-club-primary hover:text-white transition"><i class="fas fa-bars"></i></button>
-                <a href="https://wa.me/77019744464" class="hidden lg:block btn-sport bg-club-primary text-club-dark px-6 py-2 font-bold uppercase text-sm">
-                    <span class="unskew block">Записаться</span>
-                </a>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:block text-right">
+                    <a href="tel:+77019744464" class="block font-bold text-brand-black text-lg">+7 701 974 44 64</a>
+                    <span class="text-xs text-brand-yellow font-bold uppercase">Заказать звонок</span>
+                </div>
+                <button onclick="toggleMenu()" class="lg:hidden text-3xl text-brand-black"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </header>
 
-    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-club-dark flex flex-col items-center justify-center gap-8 border-l border-club-primary/20">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-gray-500 hover:text-club-primary"><i class="fas fa-times"></i></button>
-        <a href="#about" onclick="toggleMenu()" class="font-sport text-2xl uppercase hover:text-club-primary">О школе</a>
-        <a href="#coaches" onclick="toggleMenu()" class="font-sport text-2xl uppercase hover:text-club-primary">Тренерский штаб</a>
-        <a href="#locations" onclick="toggleMenu()" class="font-sport text-2xl uppercase hover:text-club-primary">Локации</a>
-        <a href="https://wa.me/77019744464" class="btn-sport bg-club-primary text-club-dark px-10 py-4 font-bold uppercase text-lg mt-4">
-            <span class="unskew block"><i class="fab fa-whatsapp mr-2"></i> Написать Руслану</span>
-        </a>
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-brand-black/95 text-white transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center gap-8">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl"><i class="fas fa-times"></i></button>
+        <a href="#about" onclick="toggleMenu()" class="text-2xl font-bold font-title hover:text-brand-yellow">О школе</a>
+        <a href="#programs" onclick="toggleMenu()" class="text-2xl font-bold font-title hover:text-brand-yellow">Программы</a>
+        <a href="#coaches" onclick="toggleMenu()" class="text-2xl font-bold font-title hover:text-brand-yellow">Тренеры</a>
+        <a href="#contacts" onclick="toggleMenu()" class="text-2xl font-bold font-title hover:text-brand-yellow">Контакты</a>
     </div>
 
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade8f55?q=80&w=1920&auto=format&fit=crop" class="w-full h-full object-cover opacity-30" alt="Stadium">
-            <div class="absolute inset-0 bg-gradient-to-r from-club-dark via-club-dark/90 to-transparent"></div>
-        </div>
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center text-center bg-brand-black text-white pt-20">
+        <div class="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?q=80&w=1920')] bg-cover bg-center bg-fixed"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
 
-        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <div class="inline-block bg-club-primary/20 border border-club-primary px-4 py-1 rounded skew-box mb-6">
-                    <span class="unskew block text-club-primary text-xs font-bold uppercase tracking-widest">Открыт набор 2025</span>
-                </div>
-                <h1 class="font-sport text-5xl md:text-7xl lg:text-8xl uppercase leading-none mb-6">
-                    ASTANA JAS <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-club-primary to-yellow-200">FOOTBALL SCHOOL</span>
-                </h1>
-                <p class="text-gray-300 text-lg md:text-xl max-w-lg mb-10 leading-relaxed border-l-4 border-club-primary pl-6">
-                    Профессиональная футбольная школа. Воспитываем чемпионов на полях лучших лицеев Астаны.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#locations" class="btn-sport bg-club-primary text-club-dark px-8 py-4 font-bold uppercase text-center hover:bg-white transition">
-                        <span class="unskew block">Выбрать школу</span>
-                    </a>
-                    <a href="#coaches" class="btn-sport bg-transparent border border-white text-white px-8 py-4 font-bold uppercase text-center hover:bg-white hover:text-club-dark">
-                        <span class="unskew block">Наши тренеры</span>
-                    </a>
-                </div>
+        <div class="relative z-10 px-6 max-w-4xl" data-aos="fade-up">
+            <span class="inline-block py-1 px-3 border border-brand-yellow text-brand-yellow text-xs font-bold uppercase tracking-[0.2em] mb-4 rounded">Since 2025</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold font-title uppercase mb-6 leading-tight">
+                Школа Будущих <br> <span class="text-brand-yellow">Чемпионов</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                Интересные тренировки с современным оснащением, опытные тренеры и дружная команда. Шанс попасть в большой футбол.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/77019744464" class="btn-main bg-brand-yellow text-brand-black py-4 px-10 rounded-full">
+                    Записаться на пробное
+                </a>
+                <a href="#programs" class="btn-main bg-transparent border-2 border-white text-white py-4 px-10 rounded-full hover:bg-white hover:text-brand-black">
+                    Наши программы
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-club-gray border-y border-white/5 relative" id="coaches">
-        <div class="bg-pattern absolute inset-0 opacity-10"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <span class="text-club-primary font-sport uppercase tracking-widest text-sm">Профессионалы</span>
-                <h2 class="font-sport text-4xl md:text-5xl uppercase mt-2">Тренерский Состав</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                
-                <div class="coach-card p-6 rounded-2xl group cursor-pointer relative overflow-hidden" data-aos="fade-up">
-                    <div class="absolute top-0 right-0 bg-club-primary text-club-dark font-bold text-xs px-3 py-1 rounded-bl-lg z-20">HEAD COACH</div>
-                    <div class="relative overflow-hidden rounded-xl mb-6 bg-gray-800 h-80 border-2 border-club-primary/20 group-hover:border-club-primary transition">
-                         <img src="images/coach1.jpg" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Chingiz">
-                    </div>
-                    <h3 class="font-sport text-xl uppercase text-white mb-1">Абугалиев Чингиз</h3>
-                    <p class="text-sm text-club-primary font-bold mb-4 uppercase tracking-wider">Главный тренер</p>
-                    <div class="text-xs text-gray-400 space-y-2 border-t border-white/10 pt-4 font-mono">
-                        <div class="flex justify-between"><span>Родился:</span> <span class="text-white">10.10.1986</span></div>
-                        <div class="flex justify-between"><span>Место:</span> <span class="text-white">Актау</span></div>
-                        <div class="flex justify-between"><span>Гражданство:</span> <span class="text-white flex items-center gap-1">Казахстан <img src="https://flagcdn.com/w20/kz.png" width="14" alt="kz"></span></div>
-                    </div>
-                </div>
-
-                <div class="coach-card p-6 rounded-2xl group cursor-pointer relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative overflow-hidden rounded-xl mb-6 bg-gray-800 h-80 border-2 border-white/10 group-hover:border-club-primary transition">
-                         <img src="images/coach2.jpg" onerror="this.src='https://images.unsplash.com/photo-1544168190-79c11e66b380?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Imran">
-                    </div>
-                    <h3 class="font-sport text-xl uppercase text-white mb-1">Умеркулов Имран</h3>
-                    <p class="text-sm text-gray-400 font-bold mb-4 uppercase tracking-wider">Ассистент гл. тренера</p>
-                    <div class="text-xs text-gray-400 space-y-2 border-t border-white/10 pt-4 font-mono">
-                        <div class="flex justify-between"><span>Родился:</span> <span class="text-white">04.09.2002</span></div>
-                        <div class="flex justify-between"><span>Место:</span> <span class="text-white">Атбасар</span></div>
-                        <div class="flex justify-between"><span>Гражданство:</span> <span class="text-white flex items-center gap-1">Казахстан <img src="https://flagcdn.com/w20/kz.png" width="14" alt="kz"></span></div>
-                    </div>
-                </div>
-
-                <div class="coach-card p-6 rounded-2xl group cursor-pointer relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative overflow-hidden rounded-xl mb-6 bg-gray-800 h-80 border-2 border-white/10 group-hover:border-club-primary transition">
-                         <img src="images/coach3.jpg" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Roman">
-                    </div>
-                    <h3 class="font-sport text-xl uppercase text-white mb-1">Цыгановкин Роман</h3>
-                    <p class="text-sm text-gray-400 font-bold mb-4 uppercase tracking-wider">Тренер вратарей</p>
-                    <div class="text-xs text-gray-400 space-y-2 border-t border-white/10 pt-4 font-mono">
-                        <div class="flex justify-between"><span>Родился:</span> <span class="text-white">23.08.1990</span></div>
-                        <div class="flex justify-between"><span>Место:</span> <span class="text-white">Астана</span></div>
-                        <div class="flex justify-between"><span>Гражданство:</span> <span class="text-white flex items-center gap-1">Казахстан <img src="https://flagcdn.com/w20/kz.png" width="14" alt="kz"></span></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24" id="locations">
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
-                    <span class="text-club-primary font-sport uppercase tracking-widest text-sm">Где мы тренируемся</span>
-                    <h2 class="font-sport text-4xl uppercase mt-2 mb-8">Наши Локации</h2>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4 p-6 bg-club-gray border border-white/5 rounded-xl hover:border-club-primary transition">
-                            <div class="w-12 h-12 bg-club-primary text-club-dark rounded-full flex items-center justify-center shrink-0">
-                                <i class="fas fa-school text-xl"></i>
-                            </div>
+                    <h2 class="text-3xl md:text-4xl font-bold font-title mb-6 text-brand-black">Наша <span class="text-brand-yellow">Миссия</span></h2>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                        Воспитать образованного, физически развитого и патриотичного гражданина Республики Казахстан. Мы создаем среду, где каждый ребенок чувствует поддержку.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-yellow/20 text-brand-yellow flex items-center justify-center rounded-full shrink-0"><i class="fas fa-heart text-xl"></i></div>
                             <div>
-                                <h3 class="font-sport text-xl uppercase mb-1">Школа-лицей №11</h3>
-                                <p class="text-sm text-gray-400 mb-2">им. Өзбекәлі Жәнібекова</p>
-                                <a href="https://go.2gis.com/location1" class="text-club-primary text-xs uppercase font-bold hover:underline">Показать на карте <i class="fas fa-arrow-right ml-1"></i></a>
+                                <h4 class="font-bold text-lg">Любовь к спорту</h4>
+                                <p class="text-sm text-gray-500">Прививаем здоровый образ жизни с ранних лет.</p>
                             </div>
                         </div>
-
-                        <div class="flex items-start gap-4 p-6 bg-club-gray border border-white/5 rounded-xl hover:border-club-primary transition">
-                            <div class="w-12 h-12 bg-club-primary text-club-dark rounded-full flex items-center justify-center shrink-0">
-                                <i class="fas fa-school text-xl"></i>
-                            </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-yellow/20 text-brand-yellow flex items-center justify-center rounded-full shrink-0"><i class="fas fa-users text-xl"></i></div>
                             <div>
-                                <h3 class="font-sport text-xl uppercase mb-1">Школа-лицей №71</h3>
-                                <p class="text-sm text-gray-400 mb-2">Комфортные условия для тренировок</p>
-                                <a href="https://go.2gis.com/location2" class="text-club-primary text-xs uppercase font-bold hover:underline">Показать на карте <i class="fas fa-arrow-right ml-1"></i></a>
+                                <h4 class="font-bold text-lg">Командный дух</h4>
+                                <p class="text-sm text-gray-500">Учим работать в команде и поддерживать друзей.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="relative h-[400px] md:h-[500px]" data-aos="zoom-in">
-                    <iframe src="https://yandex.ru/map-widget/v1/?ll=71.430564%2C51.128422&z=12" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(90%); border-radius: 1rem;" allowfullscreen="" loading="lazy"></iframe>
-                    <div class="absolute -bottom-6 -left-6 bg-club-primary text-club-dark p-6 rounded-tr-3xl skew-box">
-                        <span class="unskew block font-sport text-2xl">ASTANA</span>
-                    </div>
+                <div class="relative" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=800" class="rounded-2xl shadow-2xl relative z-10" alt="Training">
+                    <div class="absolute -bottom-6 -right-6 w-full h-full border-4 border-brand-yellow rounded-2xl z-0"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-white" id="partners">
-        <div class="container mx-auto px-6 text-center">
-            <h3 class="font-sport text-club-dark text-2xl uppercase mb-8 opacity-40">Генеральный партнер</h3>
-            <div class="flex justify-center items-center">
-                <img src="images/tehpro.png" onerror="this.src='https://placehold.co/300x100/EEE/31343C?text=TEHPRO+GROUP&font=roboto'" class="h-16 md:h-24 object-contain grayscale hover:grayscale-0 transition duration-500" alt="Tehpro Group">
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-club-primary text-club-dark relative overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h2 class="font-sport text-4xl md:text-6xl uppercase mb-6">Запишись на просмотр</h2>
-            <p class="text-club-dark/80 font-bold max-w-xl mx-auto mb-10 text-lg">
-                Стань частью команды ASTANA JAS. Позвони нам или напиши в WhatsApp.
-            </p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="tel:+77019744464" class="btn-sport bg-club-dark text-white px-10 py-4 font-bold uppercase text-lg shadow-xl hover:bg-gray-800">
-                    <span class="unskew block"><i class="fas fa-phone-alt mr-2"></i> +7 701 974 44 64</span>
-                </a>
-                <a href="https://wa.me/77019744464" class="btn-sport bg-white text-green-600 px-10 py-4 font-bold uppercase text-lg shadow-xl hover:bg-gray-100">
-                    <span class="unskew block"><i class="fab fa-whatsapp mr-2"></i> WhatsApp</span>
-                </a>
-            </div>
-            <p class="mt-8 font-bold opacity-60 uppercase tracking-widest text-sm">Менеджер Руслан</p>
-        </div>
-    </section>
-
-    <footer class="bg-club-dark border-t border-white/10 pt-16 pb-8">
+    <section id="programs" class="py-20 bg-brand-gray">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-club-primary flex items-center justify-center rounded-sm">
-                        <img src="images/logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/185/185600.png'" class="w-6 h-6 object-contain" alt="Logo">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold font-title text-brand-black">Наши <span class="text-brand-yellow">Программы</span></h2>
+                <p class="text-gray-500 mt-4">Подберем группу для любого уровня подготовки</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="price-card bg-white p-8 rounded-xl relative overflow-hidden" data-aos="fade-up">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-brand-yellow"></div>
+                    <h3 class="text-xl font-bold font-title uppercase mb-2">Группа "Старт"</h3>
+                    <p class="text-sm text-gray-500 mb-6 font-bold">2017-2019 г.р.</p>
+                    
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> 3 раза в неделю</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Игровая форма</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Общая подготовка</li>
+                    </ul>
+
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-brand-black mb-4">Уточняйте <span class="text-sm text-gray-400 font-normal">/ мес</span></div>
+                        <a href="https://wa.me/77019744464" class="block w-full py-3 border border-brand-black text-brand-black font-bold uppercase rounded hover:bg-brand-black hover:text-white transition">Записаться</a>
                     </div>
-                    <span class="font-sport text-2xl uppercase">Astana Jas</span>
                 </div>
-                
-                <div class="flex gap-6">
-                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-club-primary hover:text-club-dark flex items-center justify-center rounded transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-club-primary hover:text-club-dark flex items-center justify-center rounded transition"><i class="fab fa-tiktok"></i></a>
+
+                <div class="price-card bg-brand-black text-white p-8 rounded-xl relative transform md:-translate-y-4 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-4 right-4 bg-brand-yellow text-brand-black text-xs font-bold px-3 py-1 rounded">ХИТ</div>
+                    <h3 class="text-xl font-bold font-title uppercase mb-2 text-brand-yellow">Основная Группа</h3>
+                    <p class="text-sm text-gray-400 mb-6 font-bold">2010-2016 г.р.</p>
+                    
+                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> 3-4 раза в неделю</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Участие в турнирах</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Игровая практика</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Клубная форма</li>
+                    </ul>
+
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-white mb-4">Уточняйте <span class="text-sm text-gray-500 font-normal">/ мес</span></div>
+                        <a href="https://wa.me/77019744464" class="block w-full py-3 bg-brand-yellow text-brand-black font-bold uppercase rounded hover:bg-white transition">Записаться</a>
+                    </div>
+                </div>
+
+                <div class="price-card bg-white p-8 rounded-xl relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-brand-yellow"></div>
+                    <h3 class="text-xl font-bold font-title uppercase mb-2">Индивидуально</h3>
+                    <p class="text-sm text-gray-500 mb-6 font-bold">Любой возраст</p>
+                    
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Работа 1 на 1</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Техника и тактика</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Вратарские тренировки</li>
+                    </ul>
+
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-brand-black mb-4">По запросу</div>
+                        <a href="https://wa.me/77019744464" class="block w-full py-3 border border-brand-black text-brand-black font-bold uppercase rounded hover:bg-brand-black hover:text-white transition">Записаться</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="coaches" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold font-title text-brand-black text-center mb-12">Тренерский <span class="text-brand-yellow">Штаб</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-xl bg-gray-100 mb-4 border-b-4 border-brand-yellow">
+                        <img src="images/coach1.jpg" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=800'" class="w-full h-80 object-cover object-top transition duration-500 group-hover:scale-105" alt="Coach">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white font-bold text-xl uppercase">Абугалиев Чингиз</h3>
+                            <p class="text-brand-yellow text-xs font-bold uppercase">Главный тренер</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-xl bg-gray-100 mb-4 border-b-4 border-brand-yellow">
+                        <img src="images/coach2.jpg" onerror="this.src='https://images.unsplash.com/photo-1544168190-79c11e66b380?q=80&w=800'" class="w-full h-80 object-cover object-top transition duration-500 group-hover:scale-105" alt="Coach">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white font-bold text-xl uppercase">Умеркулов Имран</h3>
+                            <p class="text-brand-yellow text-xs font-bold uppercase">Ассистент</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-xl bg-gray-100 mb-4 border-b-4 border-brand-yellow">
+                        <img src="images/coach3.jpg" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800'" class="w-full h-80 object-cover object-top transition duration-500 group-hover:scale-105" alt="Coach">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white font-bold text-xl uppercase">Цыгановкин Роман</h3>
+                            <p class="text-brand-yellow text-xs font-bold uppercase">Тренер вратарей</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-gray" id="faq">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold font-title text-brand-black text-center mb-10">Частые <span class="text-brand-yellow">Вопросы</span></h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-white rounded-lg shadow-sm">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg">
+                        Где проходят тренировки?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-yellow"></i></span>
+                    </summary>
+                    <div class="text-gray-600 p-5 pt-0">
+                        Мы тренируемся в комфортных условиях на базе Школы-лицей №11 и Школы-лицей №71. Локации оборудованы всем необходимым.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-lg shadow-sm">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg">
+                        Какая форма нужна?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-yellow"></i></span>
+                    </summary>
+                    <div class="text-gray-600 p-5 pt-0">
+                        Для первой тренировки достаточно шорт, футболки и удобных кроссовок. В дальнейшем мы заказываем фирменную клубную форму.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-lg shadow-sm">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg">
+                        Как записаться?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-yellow"></i></span>
+                    </summary>
+                    <div class="text-gray-600 p-5 pt-0">
+                        Просто нажмите на кнопку WhatsApp ниже или позвоните нашему менеджеру Руслану по номеру +7 701 974 44 64.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400 uppercase tracking-widest text-xs font-bold mb-6">Генеральный партнер</p>
+            <div class="flex justify-center">
+                <img src="images/tehpro.png" onerror="this.src='https://placehold.co/300x100?text=TEHPRO+GROUP'" class="h-16 opacity-80 hover:opacity-100 transition grayscale hover:grayscale-0" alt="Partner">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-black text-white pt-16 pb-8 border-t border-brand-yellow" id="contacts">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="images/logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/185/185600.png'" class="w-10 h-10 object-contain brightness-0 invert" alt="Logo">
+                        <span class="font-title text-2xl font-bold">ASTANA JAS</span>
+                    </div>
+                    <p class="text-gray-400 text-sm max-w-xs">
+                        Профессиональная футбольная школа в Астане. Растим чемпионов с 2025 года.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-yellow uppercase mb-4">Меню</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#about" class="hover:text-white">О нас</a></li>
+                        <li><a href="#programs" class="hover:text-white">Программы</a></li>
+                        <li><a href="#coaches" class="hover:text-white">Тренеры</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-yellow uppercase mb-4">Контакты</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i> +7 701 974 44 64</li>
+                        <li><i class="fab fa-whatsapp mr-2"></i> Менеджер Руслан</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Астана, №11 и №71 школы</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="border-t border-white/5 pt-8 text-center text-xs text-gray-600 font-mono">
-                <p>© 2025 Astana Jas Football School.</p>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2025 Astana Jas. Все права защищены.</p>
+                <p>Разработка сайта: Anuken</p>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/77019744464" class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition animate-bounce border-4 border-club-dark">
+    <div class="fixed bottom-0 left-0 w-full z-40 flex md:hidden">
+        <a href="tel:+77019744464" class="flex-1 bg-brand-yellow text-brand-black py-4 text-center font-bold uppercase flex items-center justify-center gap-2">
+            <i class="fas fa-phone-alt"></i> Позвонить
+        </a>
+        <a href="https://wa.me/77019744464" class="flex-1 bg-[#25D366] text-white py-4 text-center font-bold uppercase flex items-center justify-center gap-2">
+            <i class="fab fa-whatsapp text-xl"></i> WhatsApp
+        </a>
+    </div>
+
+    <a href="https://wa.me/77019744464" class="hidden md:flex fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] rounded-full items-center justify-center text-white shadow-xl hover:scale-110 transition animate-bounce">
         <i class="fab fa-whatsapp text-4xl"></i>
     </a>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, duration: 800, offset: 50 });
+        AOS.init({ once: true, duration: 800 });
 
-        // Исправленная логика Preloader (таймер 2 сек, если картинки не грузятся)
+        // Preloader Logic
         window.addEventListener('load', () => {
-            hidePreloader();
+            setTimeout(() => {
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 500);
+            }, 800);
         });
-
-        // Fail-safe таймер
+        
+        // Fallback если картинки не грузятся
         setTimeout(() => {
-            hidePreloader();
+            const pre = document.getElementById('preloader');
+            if(pre) { pre.style.opacity = '0'; setTimeout(() => { pre.style.display = 'none'; }, 500); }
         }, 2000);
 
-        function hidePreloader() {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.opacity = '0';
-                setTimeout(() => { preloader.style.display = 'none'; }, 500);
-            }
-        }
-
         function toggleMenu() {
-            document.getElementById('mobile-menu').classList.toggle('open');
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('translate-x-full')) {
+                menu.classList.remove('translate-x-full');
+            } else {
+                menu.classList.add('translate-x-full');
+            }
         }
     </script>
 </body>
