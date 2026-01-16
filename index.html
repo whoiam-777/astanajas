@@ -53,11 +53,12 @@
         .img-box {
             width: 100%; height: 100%;
             background-color: #F3F4F6;
-            border: 1px dashed #9CA3AF;
+            border: 2px dashed #EF4444; /* Красная рамка если нет фото */
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            color: #6B7280; font-family: monospace; font-size: 12px;
+            color: #EF4444; font-family: monospace; font-size: 12px;
             position: absolute; top: 0; left: 0; z-index: 5;
+            text-align: center; padding: 10px;
         }
 
         .btn-main {
@@ -102,8 +103,8 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-4 group">
                 <div class="w-12 h-12 relative shrink-0">
-                    <img src="logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain" alt="Logo">
-                    <div class="img-box rounded-full" style="display:none; border-radius: 50%;"><i class="fas fa-shield-alt text-xs"></i></div>
+                    <img src="images/logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain" alt="Logo">
+                    <div class="img-box rounded-full bg-white border-none" style="display:none; border-radius: 50%; color: #000"><i class="fas fa-shield-alt text-xl"></i></div>
                 </div>
                 <div class="flex flex-col">
                     <span class="font-header text-xl md:text-2xl font-bold uppercase tracking-tighter leading-none text-black">Astana Jas</span>
@@ -201,10 +202,10 @@
                     <div class="relative p-3 md:p-4">
                         <div class="absolute inset-0 bg-brand-gold transform rotate-2 rounded-3xl z-0"></div>
                         <div class="relative bg-white p-2 rounded-3xl shadow-frame z-10">
-                            <img src="loc1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-auto rounded-2xl block relative z-20" alt="Команда">
+                            <img src="images/loc1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-auto rounded-2xl block relative z-20" alt="Команда">
                             <div class="img-box rounded-2xl bg-gray-100 z-10">
-                                <i class="fas fa-camera text-3xl mb-2"></i>
-                                <span>loc1.jpg</span>
+                                <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+                                <span>Нет фото: images/loc1.jpg</span>
                             </div>
                         </div>
                     </div>
@@ -267,10 +268,10 @@
             <div class="relative bg-white rounded-3xl shadow-xl overflow-hidden p-6 md:p-12" data-aos="zoom-in">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 min-h-[300px]">
-                         <img src="kit.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-auto object-contain" alt="Дизайн Формы">
+                         <img src="images/kit.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-auto object-contain" alt="Дизайн Формы">
                          <div class="img-box bg-gray-50 flex flex-col items-center justify-center absolute inset-0 z-0" style="display:none">
-                             <i class="fas fa-tshirt text-gray-300 text-4xl mb-2"></i>
-                             <span class="text-gray-400">kit.jpg</span>
+                             <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+                             <span>Нет фото: images/kit.jpg</span>
                          </div>
                     </div>
 
@@ -311,8 +312,11 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
                     <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Абугалиев Чингиз">
-                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>1.jpg</span></div>
+                        <img src="images/coach1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <div class="img-box bg-gray-200">
+                            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+                            <span>Нет фото: images/coach1.jpg</span>
+                        </div>
                     </div>
                     <div class="p-6">
                         <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Главный тренер</span>
@@ -322,8 +326,11 @@
 
                 <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
                     <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="2.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Умеркулов Имран">
-                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>2.jpg</span></div>
+                        <img src="images/coach2.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <div class="img-box bg-gray-200">
+                            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+                            <span>Нет фото: images/coach2.jpg</span>
+                        </div>
                     </div>
                     <div class="p-6">
                         <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Ассистент</span>
@@ -333,8 +340,11 @@
 
                 <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
                     <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="3.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Цыгановкин Роман">
-                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>3.jpg</span></div>
+                        <img src="images/coach3.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <div class="img-box bg-gray-200">
+                            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+                            <span>Нет фото: images/coach3.jpg</span>
+                        </div>
                     </div>
                     <div class="p-6">
                         <span class="text-xs font-bold text-green-600 uppercase tracking-widest">Вратари</span>
@@ -350,16 +360,16 @@
             <h3 class="font-header text-xl uppercase text-gray-400 mb-8 tracking-widest">Partners</h3>
             <div class="flex flex-wrap justify-center items-center gap-12">
                 <div class="w-40 h-20 relative flex justify-center items-center">
-                    <img src="tehpro.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain transition hover:scale-110" alt="Tehpro">
-                    <div class="img-box border-none bg-white text-xs text-red-500 hidden flex-col items-center justify-center absolute inset-0">
-                        <i class="fas fa-times mb-1"></i> tehpro.png
+                    <img src="images/tehpro.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain transition hover:scale-110" alt="Tehpro">
+                    <div class="img-box border-none bg-white text-xs hidden flex-col items-center justify-center absolute inset-0">
+                        <i class="fas fa-times mb-1"></i> Нет images/tehpro.png
                     </div>
                 </div>
                 
                 <div class="w-40 h-20 relative flex justify-center items-center">
-                    <img src="zhenis.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain transition hover:scale-110" alt="Zhenis">
-                    <div class="img-box border-none bg-white text-xs text-red-500 hidden flex-col items-center justify-center absolute inset-0">
-                        <i class="fas fa-times mb-1"></i> zhenis.png
+                    <img src="images/zhenis.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain transition hover:scale-110" alt="Zhenis">
+                    <div class="img-box border-none bg-white text-xs hidden flex-col items-center justify-center absolute inset-0">
+                        <i class="fas fa-times mb-1"></i> Нет images/zhenis.png
                     </div>
                 </div>
             </div>
@@ -406,7 +416,7 @@
         <div class="container mx-auto px-6 text-center">
             <div class="flex flex-col items-center gap-4 mb-8">
                 <div class="w-10 h-10 relative">
-                     <img src="logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain brightness-0 invert" alt="Logo">
+                     <img src="images/logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain brightness-0 invert" alt="Logo">
                      <div class="img-box bg-transparent border-none text-white"><i class="fas fa-shield-alt text-2xl"></i></div>
                 </div>
                 <span class="font-header text-2xl uppercase tracking-widest">Astana Jas</span>
