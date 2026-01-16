@@ -20,9 +20,9 @@
                     },
                     colors: { 
                         brand: {
-                            yellow: '#FFD700', /* Ваш фирменный желтый */
-                            black: '#111111',  /* Черный фон */
-                            gray: '#F5F5F5',   /* Светлый фон блоков */
+                            yellow: '#FFD700', 
+                            black: '#111111',  
+                            gray: '#F5F5F5',
                             darkgray: '#222222'
                         }
                     }
@@ -35,38 +35,19 @@
         body { font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
         h1, h2, h3, h4, .font-title { font-family: 'Montserrat', sans-serif; }
         
-        /* Стилизация скроллбара */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #111; }
         ::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 5px; }
 
-        /* Эффект кнопок как на референсе */
-        .btn-main {
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
+        .btn-main { transition: all 0.3s ease; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4); }
 
-        /* Карточки цен */
-        .price-card {
-            transition: 0.3s;
-            border: 1px solid #eee;
-        }
-        .price-card:hover {
-            border-color: #FFD700;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
+        .price-card { transition: 0.3s; border: 1px solid #eee; }
+        .price-card:hover { border-color: #FFD700; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 
-        /* Аккордеон FAQ */
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
-        details[open] summary ~ * { animation: sweep .5s ease-in-out; }
-        @keyframes sweep {
-            0%    {opacity: 0; transform: translateY(-10px)}
-            100%  {opacity: 1; transform: translateY(0)}
+        /* Заглушка для фото (Серый фон + иконка) */
+        .img-placeholder {
+            width: 100%; height: 100%; background-color: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af;
         }
     </style>
 </head>
@@ -83,7 +64,7 @@
         <div class="hidden md:block bg-brand-black text-white text-xs py-2">
             <div class="container mx-auto px-6 flex justify-between items-center">
                 <div class="flex gap-6">
-                    <span><i class="fas fa-map-marker-alt text-brand-yellow mr-2"></i> Астана, ул. Жәнібекова / ул. Е-10</span>
+                    <span><i class="fas fa-map-marker-alt text-brand-yellow mr-2"></i> Астана, школы №11 и №71</span>
                     <span><i class="far fa-clock text-brand-yellow mr-2"></i> Пн-Вс: 09:00 - 21:00</span>
                 </div>
                 <div class="flex gap-4">
@@ -95,7 +76,9 @@
 
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center gap-3">
-                <img src="images/logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/185/185600.png'" class="w-12 h-12 object-contain" alt="Logo">
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-400">
+                    <i class="fas fa-image"></i>
+                </div>
                 <div class="leading-tight">
                     <div class="font-title font-bold text-xl text-brand-black uppercase">Astana Jas</div>
                     <div class="text-[10px] text-gray-500 font-bold tracking-widest uppercase">Football School</div>
@@ -112,7 +95,7 @@
             <div class="flex items-center gap-4">
                 <div class="hidden md:block text-right">
                     <a href="tel:+77019744464" class="block font-bold text-brand-black text-lg">+7 701 974 44 64</a>
-                    <span class="text-xs text-brand-yellow font-bold uppercase">Заказать звонок</span>
+                    <span class="text-xs text-brand-yellow font-bold uppercase">Руслан (Менеджер)</span>
                 </div>
                 <button onclick="toggleMenu()" class="lg:hidden text-3xl text-brand-black"><i class="fas fa-bars"></i></button>
             </div>
@@ -128,23 +111,21 @@
     </div>
 
     <section class="relative h-screen min-h-[600px] flex items-center justify-center text-center bg-brand-black text-white pt-20">
-        <div class="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?q=80&w=1920')] bg-cover bg-center bg-fixed"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
-
+        <div class="absolute inset-0 bg-gray-900"></div> 
         <div class="relative z-10 px-6 max-w-4xl" data-aos="fade-up">
             <span class="inline-block py-1 px-3 border border-brand-yellow text-brand-yellow text-xs font-bold uppercase tracking-[0.2em] mb-4 rounded">Since 2025</span>
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold font-title uppercase mb-6 leading-tight">
-                Школа Будущих <br> <span class="text-brand-yellow">Чемпионов</span>
+                ASTANA JAS <br> <span class="text-brand-yellow">FOOTBALL SCHOOL</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                Интересные тренировки с современным оснащением, опытные тренеры и дружная команда. Шанс попасть в большой футбол.
+                Воспитываем чемпионов на полях лучших лицеев Астаны. Присоединяйся к команде!
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="https://wa.me/77019744464" class="btn-main bg-brand-yellow text-brand-black py-4 px-10 rounded-full">
-                    Записаться на пробное
+                    Записаться
                 </a>
                 <a href="#programs" class="btn-main bg-transparent border-2 border-white text-white py-4 px-10 rounded-full hover:bg-white hover:text-brand-black">
-                    Наши программы
+                    Программы
                 </a>
             </div>
         </div>
@@ -156,166 +137,56 @@
                 <div data-aos="fade-right">
                     <h2 class="text-3xl md:text-4xl font-bold font-title mb-6 text-brand-black">Наша <span class="text-brand-yellow">Миссия</span></h2>
                     <p class="text-gray-600 leading-relaxed mb-6 text-lg">
-                        Воспитать образованного, физически развитого и патриотичного гражданина Республики Казахстан. Мы создаем среду, где каждый ребенок чувствует поддержку.
+                        Воспитать образованного, физически развитого и патриотичного гражданина. Мы создаем среду, где каждый ребенок чувствует поддержку.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-start gap-4">
                             <div class="w-12 h-12 bg-brand-yellow/20 text-brand-yellow flex items-center justify-center rounded-full shrink-0"><i class="fas fa-heart text-xl"></i></div>
                             <div>
-                                <h4 class="font-bold text-lg">Любовь к спорту</h4>
-                                <p class="text-sm text-gray-500">Прививаем здоровый образ жизни с ранних лет.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-brand-yellow/20 text-brand-yellow flex items-center justify-center rounded-full shrink-0"><i class="fas fa-users text-xl"></i></div>
-                            <div>
-                                <h4 class="font-bold text-lg">Командный дух</h4>
-                                <p class="text-sm text-gray-500">Учим работать в команде и поддерживать друзей.</p>
+                                <h4 class="font-bold text-lg">Локации</h4>
+                                <p class="text-sm text-gray-500">Школа-лицей №11 и Школа-лицей №71.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="relative" data-aos="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=800" class="rounded-2xl shadow-2xl relative z-10" alt="Training">
-                    <div class="absolute -bottom-6 -right-6 w-full h-full border-4 border-brand-yellow rounded-2xl z-0"></div>
-                </div>
+                <div class="relative h-64 md:h-96 rounded-2xl overflow-hidden bg-gray-100" data-aos="zoom-in">
+                    <div class="img-placeholder"><i class="fas fa-image text-4xl"></i></div>
+                    </div>
             </div>
         </div>
     </section>
 
-    <section id="programs" class="py-20 bg-brand-gray">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold font-title text-brand-black">Наши <span class="text-brand-yellow">Программы</span></h2>
-                <p class="text-gray-500 mt-4">Подберем группу для любого уровня подготовки</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="price-card bg-white p-8 rounded-xl relative overflow-hidden" data-aos="fade-up">
-                    <div class="absolute top-0 left-0 w-full h-2 bg-brand-yellow"></div>
-                    <h3 class="text-xl font-bold font-title uppercase mb-2">Группа "Старт"</h3>
-                    <p class="text-sm text-gray-500 mb-6 font-bold">2017-2019 г.р.</p>
-                    
-                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> 3 раза в неделю</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Игровая форма</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Общая подготовка</li>
-                    </ul>
-
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-brand-black mb-4">Уточняйте <span class="text-sm text-gray-400 font-normal">/ мес</span></div>
-                        <a href="https://wa.me/77019744464" class="block w-full py-3 border border-brand-black text-brand-black font-bold uppercase rounded hover:bg-brand-black hover:text-white transition">Записаться</a>
-                    </div>
-                </div>
-
-                <div class="price-card bg-brand-black text-white p-8 rounded-xl relative transform md:-translate-y-4 shadow-xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute top-4 right-4 bg-brand-yellow text-brand-black text-xs font-bold px-3 py-1 rounded">ХИТ</div>
-                    <h3 class="text-xl font-bold font-title uppercase mb-2 text-brand-yellow">Основная Группа</h3>
-                    <p class="text-sm text-gray-400 mb-6 font-bold">2010-2016 г.р.</p>
-                    
-                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> 3-4 раза в неделю</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Участие в турнирах</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Игровая практика</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Клубная форма</li>
-                    </ul>
-
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-white mb-4">Уточняйте <span class="text-sm text-gray-500 font-normal">/ мес</span></div>
-                        <a href="https://wa.me/77019744464" class="block w-full py-3 bg-brand-yellow text-brand-black font-bold uppercase rounded hover:bg-white transition">Записаться</a>
-                    </div>
-                </div>
-
-                <div class="price-card bg-white p-8 rounded-xl relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute top-0 left-0 w-full h-2 bg-brand-yellow"></div>
-                    <h3 class="text-xl font-bold font-title uppercase mb-2">Индивидуально</h3>
-                    <p class="text-sm text-gray-500 mb-6 font-bold">Любой возраст</p>
-                    
-                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Работа 1 на 1</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Техника и тактика</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Вратарские тренировки</li>
-                    </ul>
-
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-brand-black mb-4">По запросу</div>
-                        <a href="https://wa.me/77019744464" class="block w-full py-3 border border-brand-black text-brand-black font-bold uppercase rounded hover:bg-brand-black hover:text-white transition">Записаться</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="coaches" class="py-20 bg-white">
+    <section id="coaches" class="py-20 bg-brand-gray">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold font-title text-brand-black text-center mb-12">Тренерский <span class="text-brand-yellow">Штаб</span></h2>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-xl bg-gray-100 mb-4 border-b-4 border-brand-yellow">
-                        <img src="images/coach1.jpg" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=800'" class="w-full h-80 object-cover object-top transition duration-500 group-hover:scale-105" alt="Coach">
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-white font-bold text-xl uppercase">Абугалиев Чингиз</h3>
-                            <p class="text-brand-yellow text-xs font-bold uppercase">Главный тренер</p>
+                <div class="group cursor-pointer bg-white p-4 rounded-xl shadow-sm hover:shadow-lg transition">
+                    <div class="relative overflow-hidden rounded-lg bg-gray-200 mb-4 h-80">
+                        <div class="img-placeholder"><i class="fas fa-user text-4xl"></i></div>
                         </div>
-                    </div>
+                    <h3 class="font-bold text-xl uppercase">Абугалиев Чингиз</h3>
+                    <p class="text-brand-yellow text-xs font-bold uppercase mb-2">Главный тренер</p>
+                    <p class="text-xs text-gray-500">Родился: 10.10.1986 (Актау)</p>
                 </div>
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-xl bg-gray-100 mb-4 border-b-4 border-brand-yellow">
-                        <img src="images/coach2.jpg" onerror="this.src='https://images.unsplash.com/photo-1544168190-79c11e66b380?q=80&w=800'" class="w-full h-80 object-cover object-top transition duration-500 group-hover:scale-105" alt="Coach">
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-white font-bold text-xl uppercase">Умеркулов Имран</h3>
-                            <p class="text-brand-yellow text-xs font-bold uppercase">Ассистент</p>
+
+                <div class="group cursor-pointer bg-white p-4 rounded-xl shadow-sm hover:shadow-lg transition">
+                    <div class="relative overflow-hidden rounded-lg bg-gray-200 mb-4 h-80">
+                        <div class="img-placeholder"><i class="fas fa-user text-4xl"></i></div>
                         </div>
-                    </div>
+                    <h3 class="font-bold text-xl uppercase">Умеркулов Имран</h3>
+                    <p class="text-brand-yellow text-xs font-bold uppercase mb-2">Ассистент</p>
+                    <p class="text-xs text-gray-500">Родился: 04.09.2002 (Атбасар)</p>
                 </div>
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-xl bg-gray-100 mb-4 border-b-4 border-brand-yellow">
-                        <img src="images/coach3.jpg" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800'" class="w-full h-80 object-cover object-top transition duration-500 group-hover:scale-105" alt="Coach">
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-white font-bold text-xl uppercase">Цыгановкин Роман</h3>
-                            <p class="text-brand-yellow text-xs font-bold uppercase">Тренер вратарей</p>
+
+                <div class="group cursor-pointer bg-white p-4 rounded-xl shadow-sm hover:shadow-lg transition">
+                    <div class="relative overflow-hidden rounded-lg bg-gray-200 mb-4 h-80">
+                        <div class="img-placeholder"><i class="fas fa-user text-4xl"></i></div>
                         </div>
-                    </div>
+                    <h3 class="font-bold text-xl uppercase">Цыгановкин Роман</h3>
+                    <p class="text-brand-yellow text-xs font-bold uppercase mb-2">Тренер вратарей</p>
+                    <p class="text-xs text-gray-500">Родился: 23.08.1990 (Астана)</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-brand-gray" id="faq">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold font-title text-brand-black text-center mb-10">Частые <span class="text-brand-yellow">Вопросы</span></h2>
-            
-            <div class="space-y-4">
-                <details class="group bg-white rounded-lg shadow-sm">
-                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg">
-                        Где проходят тренировки?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-yellow"></i></span>
-                    </summary>
-                    <div class="text-gray-600 p-5 pt-0">
-                        Мы тренируемся в комфортных условиях на базе Школы-лицей №11 и Школы-лицей №71. Локации оборудованы всем необходимым.
-                    </div>
-                </details>
-
-                <details class="group bg-white rounded-lg shadow-sm">
-                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg">
-                        Какая форма нужна?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-yellow"></i></span>
-                    </summary>
-                    <div class="text-gray-600 p-5 pt-0">
-                        Для первой тренировки достаточно шорт, футболки и удобных кроссовок. В дальнейшем мы заказываем фирменную клубную форму.
-                    </div>
-                </details>
-
-                <details class="group bg-white rounded-lg shadow-sm">
-                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg">
-                        Как записаться?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-yellow"></i></span>
-                    </summary>
-                    <div class="text-gray-600 p-5 pt-0">
-                        Просто нажмите на кнопку WhatsApp ниже или позвоните нашему менеджеру Руслану по номеру +7 701 974 44 64.
-                    </div>
-                </details>
             </div>
         </div>
     </section>
@@ -323,9 +194,9 @@
     <section class="py-12 bg-white border-t border-gray-100">
         <div class="container mx-auto px-6 text-center">
             <p class="text-gray-400 uppercase tracking-widest text-xs font-bold mb-6">Генеральный партнер</p>
-            <div class="flex justify-center">
-                <img src="images/tehpro.png" onerror="this.src='https://placehold.co/300x100?text=TEHPRO+GROUP'" class="h-16 opacity-80 hover:opacity-100 transition grayscale hover:grayscale-0" alt="Partner">
-            </div>
+            <div class="flex justify-center h-20">
+                <div class="w-48 h-full bg-gray-100 flex items-center justify-center text-gray-400 font-bold rounded">LOGO TEHPRO</div>
+                </div>
         </div>
     </section>
 
@@ -334,7 +205,7 @@
             <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="images/logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/185/185600.png'" class="w-10 h-10 object-contain brightness-0 invert" alt="Logo">
+                        <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center"><i class="fas fa-image"></i></div>
                         <span class="font-title text-2xl font-bold">ASTANA JAS</span>
                     </div>
                     <p class="text-gray-400 text-sm max-w-xs">
@@ -383,19 +254,17 @@
     <script>
         AOS.init({ once: true, duration: 800 });
 
-        // Preloader Logic
-        window.addEventListener('load', () => {
+        // Исправленный скрипт загрузки
+        // Мы просто убираем прелоадер через 500мс после загрузки DOM, не дожидаясь картинок
+        document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
-                document.getElementById('preloader').style.opacity = '0';
-                setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 500);
-            }, 800);
+                const preloader = document.getElementById('preloader');
+                if(preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => { preloader.style.display = 'none'; }, 500);
+                }
+            }, 500);
         });
-        
-        // Fallback если картинки не грузятся
-        setTimeout(() => {
-            const pre = document.getElementById('preloader');
-            if(pre) { pre.style.opacity = '0'; setTimeout(() => { pre.style.display = 'none'; }, 500); }
-        }, 2000);
 
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
