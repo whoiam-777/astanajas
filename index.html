@@ -273,11 +273,16 @@
 
             <div class="relative bg-white rounded-3xl shadow-xl overflow-hidden p-6 md:p-12" data-aos="zoom-in">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-100">
-                         <img src="images/kit.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-auto object-contain" alt="Дизайн Формы">
-                         <div class="img-box bg-gray-50">
-                             <i class="fas fa-tshirt text-4xl mb-2"></i>
-                             <span>images/kit.jpg</span>
+                    <div class="relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 min-h-[300px]">
+                         <img src="images/kit.jpg" 
+                              onerror="this.src='images/kit.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                              class="w-full h-auto object-contain" 
+                              alt="Дизайн Формы">
+                         
+                         <div class="img-box bg-gray-50 flex flex-col items-center justify-center absolute inset-0 z-0" style="display:none">
+                             <i class="fas fa-exclamation-triangle text-red-500 text-4xl mb-2"></i>
+                             <span class="text-red-500 font-bold">Не найдено: images/kit.jpg</span>
+                             <p class="text-xs text-gray-400 mt-2">Проверьте название файла</p>
                          </div>
                     </div>
 
@@ -318,60 +323,28 @@
         </div>
     </section>
 
-    <section id="team" class="py-20 bg-white border-t border-gray-200">
-        <div class="container mx-auto px-6">
-            <h3 class="font-header text-4xl md:text-5xl font-bold uppercase text-brand-black text-center mb-16">
-                Тренерский Штаб
-            </h3>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
-                    <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
-                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach1.jpg</span></div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Главный тренер</span>
-                        <h4 class="font-header text-2xl uppercase mt-1">Абугалиев Чингиз</h4>
-                    </div>
-                </div>
-
-                <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
-                    <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach2.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
-                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach2.jpg</span></div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Ассистент</span>
-                        <h4 class="font-header text-2xl uppercase mt-1">Умеркулов Имран</h4>
-                    </div>
-                </div>
-
-                <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
-                    <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach3.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
-                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach3.jpg</span></div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-green-600 uppercase tracking-widest">Вратари</span>
-                        <h4 class="font-header text-2xl uppercase mt-1">Цыгановкин Роман</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="py-16 bg-white border-t">
         <div class="container mx-auto px-6 text-center">
             <h3 class="font-header text-xl uppercase text-gray-400 mb-8 tracking-widest">Partners</h3>
             <div class="flex flex-wrap justify-center items-center gap-12">
-                <div class="w-32 h-16 relative">
-                    <img src="images/tehpro.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain grayscale hover:grayscale-0 transition" alt="Tehpro">
-                    <div class="img-box border-none bg-white">tehpro.png</div>
+                <div class="w-40 h-20 relative flex justify-center items-center">
+                    <img src="images/tehpro.png" 
+                         onerror="this.src='images/tehpro.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                         class="w-full h-full object-contain grayscale hover:grayscale-0 transition" 
+                         alt="Tehpro">
+                    <div class="img-box border-none bg-white text-xs text-red-500 hidden flex-col items-center justify-center absolute inset-0">
+                        <i class="fas fa-times mb-1"></i> Нет tehpro.png
+                    </div>
                 </div>
-                <div class="w-32 h-16 relative">
-                    <img src="images/zhenis.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain grayscale hover:grayscale-0 transition" alt="Zhenis">
-                    <div class="img-box border-none bg-white">zhenis.png</div>
+                
+                <div class="w-40 h-20 relative flex justify-center items-center">
+                    <img src="images/zhenis.png" 
+                         onerror="this.src='images/zhenis.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                         class="w-full h-full object-contain grayscale hover:grayscale-0 transition" 
+                         alt="Zhenis">
+                    <div class="img-box border-none bg-white text-xs text-red-500 hidden flex-col items-center justify-center absolute inset-0">
+                        <i class="fas fa-times mb-1"></i> Нет zhenis.png
+                    </div>
                 </div>
             </div>
         </div>
