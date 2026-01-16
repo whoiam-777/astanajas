@@ -37,6 +37,7 @@
                     boxShadow: {
                         'card': '0 10px 30px rgba(0,0,0,0.05)',
                         'hover': '0 20px 40px rgba(255, 215, 0, 0.15)',
+                        'frame': '0 20px 40px rgba(0,0,0,0.2)', /* Тень для рамки */
                     },
                     animation: {
                         'spin-slow': 'spin 12s linear infinite',
@@ -74,6 +75,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            z-index: 10; /* Поверх фото */
         }
         .img-box:hover { 
             border-color: #FFD700; 
@@ -301,15 +303,15 @@
         </div>
     </section>
 
-    <section id="about" class="py-32 bg-brand-gray striped-bg">
+    <section id="about" class="py-32 bg-brand-gray striped-bg overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="grid lg:grid-cols-5 gap-12 items-center">
                 
-                <div data-aos="fade-right">
+                <div class="lg:col-span-2" data-aos="fade-right">
                     <h4 class="text-brand-gold font-bold uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
                         <span class="w-10 h-1 bg-brand-gold"></span> Философия
                     </h4>
-                    <h2 class="font-header text-6xl md:text-8xl font-bold uppercase text-brand-black leading-[0.9] mb-10">
+                    <h2 class="font-header text-5xl md:text-7xl font-bold uppercase text-brand-black leading-[0.9] mb-8">
                         Больше чем <br> <span class="text-outline-dark">Просто Игра</span>
                     </h2>
                     
@@ -317,13 +319,13 @@
                         Быть лучшим футбольным клубом, несущим историю казахстанского футбола. Мы создаем комплексные условия для прогресса и имеем культурную ценность для общества.
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                        <div class="bg-white p-6 shadow-card hover:shadow-hover transition duration-300">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
+                        <div class="bg-white p-6 shadow-card hover:shadow-hover transition duration-300 rounded-xl">
                             <i class="fas fa-heart text-3xl text-brand-black mb-4"></i>
                             <h4 class="font-header text-xl uppercase font-bold mb-2">Ценности</h4>
                             <p class="text-sm text-gray-500">Принципы честной борьбы. Высокие стандарты. Семья.</p>
                         </div>
-                        <div class="bg-white p-6 shadow-card hover:shadow-hover transition duration-300">
+                        <div class="bg-white p-6 shadow-card hover:shadow-hover transition duration-300 rounded-xl">
                             <i class="fas fa-globe text-3xl text-brand-black mb-4"></i>
                             <h4 class="font-header text-xl uppercase font-bold mb-2">Общество</h4>
                             <p class="text-sm text-gray-500">Возродить любовь и причастность к клубу.</p>
@@ -331,20 +333,16 @@
                     </div>
                 </div>
 
-                <div class="relative h-[600px] w-full" data-aos="fade-left">
-                    <div class="absolute inset-0 bg-brand-black transform rotate-3 rounded-3xl opacity-10"></div>
-                    <div class="absolute inset-0 bg-white transform -rotate-3 rounded-3xl border-4 border-white shadow-2xl overflow-hidden">
-                        <img src="images/loc1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" alt="Training">
+                <div class="lg:col-span-3 relative w-full h-[500px] lg:h-[600px]" data-aos="fade-left">
+                    <div class="absolute inset-0 bg-brand-gold/20 rounded-3xl transform rotate-3 scale-105 -z-10"></div>
+                    
+                    <div class="relative h-full w-full rounded-3xl border-4 border-white shadow-frame overflow-hidden group">
+                        <img src="images/loc1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover transition duration-700" alt="Training">
                         <div class="img-box bg-gray-100">
                             <i class="fas fa-camera"></i>
                             <span>images/loc1.jpg</span>
                             <p>Фото с тренировки</p>
                         </div>
-                    </div>
-                    
-                    <div class="absolute -bottom-10 -left-10 bg-brand-gold p-8 shadow-xl animate-bounce-slow hidden md:block">
-                        <span class="block font-header text-4xl font-bold text-black">100%</span>
-                        <span class="block text-xs font-bold uppercase tracking-widest text-black">Отдача</span>
                     </div>
                 </div>
 
@@ -529,7 +527,7 @@
         </div>
     </section>
 
-    <section id="locations" class="py-32 bg-gray-900 text-white relative">
+    <section id="locations" class="py-32 bg-brand-black text-white relative">
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 h-full">
                 
