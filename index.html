@@ -20,8 +20,8 @@
                     },
                     colors: { 
                         club: {
-                            dark: '#111111',   /* Строгий черный */
-                            primary: '#FFD700', /* Фирменный желтый/золотой */
+                            dark: '#111111',   
+                            primary: '#FFD700', 
                             gray: '#1F1F1F'
                         }
                     },
@@ -52,7 +52,6 @@
         #mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
         #mobile-menu.open { transform: translateX(0); }
         
-        /* Карточка тренера (FIFA Style Gold) */
         .coach-card {
             background: linear-gradient(145deg, #1F1F1F 0%, #111111 100%);
             border: 1px solid rgba(255, 215, 0, 0.1);
@@ -163,7 +162,6 @@
                     </div>
                     <h3 class="font-sport text-xl uppercase text-white mb-1">Абугалиев Чингиз</h3>
                     <p class="text-sm text-club-primary font-bold mb-4 uppercase tracking-wider">Главный тренер</p>
-                    
                     <div class="text-xs text-gray-400 space-y-2 border-t border-white/10 pt-4 font-mono">
                         <div class="flex justify-between"><span>Родился:</span> <span class="text-white">10.10.1986</span></div>
                         <div class="flex justify-between"><span>Место:</span> <span class="text-white">Актау</span></div>
@@ -177,7 +175,6 @@
                     </div>
                     <h3 class="font-sport text-xl uppercase text-white mb-1">Умеркулов Имран</h3>
                     <p class="text-sm text-gray-400 font-bold mb-4 uppercase tracking-wider">Ассистент гл. тренера</p>
-                    
                     <div class="text-xs text-gray-400 space-y-2 border-t border-white/10 pt-4 font-mono">
                         <div class="flex justify-between"><span>Родился:</span> <span class="text-white">04.09.2002</span></div>
                         <div class="flex justify-between"><span>Место:</span> <span class="text-white">Атбасар</span></div>
@@ -191,7 +188,6 @@
                     </div>
                     <h3 class="font-sport text-xl uppercase text-white mb-1">Цыгановкин Роман</h3>
                     <p class="text-sm text-gray-400 font-bold mb-4 uppercase tracking-wider">Тренер вратарей</p>
-                    
                     <div class="text-xs text-gray-400 space-y-2 border-t border-white/10 pt-4 font-mono">
                         <div class="flex justify-between"><span>Родился:</span> <span class="text-white">23.08.1990</span></div>
                         <div class="flex justify-between"><span>Место:</span> <span class="text-white">Астана</span></div>
@@ -236,7 +232,7 @@
                 </div>
                 
                 <div class="relative h-[400px] md:h-[500px]" data-aos="zoom-in">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2503.696349479342!2d71.430!3d51.130!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDA3JzQ4LjAiTiA3McKwMjUnNDguMCJF!5e0!3m2!1sen!2skz!4v1620000000000!5m2!1sen!2skz" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(90%); border-radius: 1rem;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://yandex.ru/map-widget/v1/?ll=71.430564%2C51.128422&z=12" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(90%); border-radius: 1rem;" allowfullscreen="" loading="lazy"></iframe>
                     <div class="absolute -bottom-6 -left-6 bg-club-primary text-club-dark p-6 rounded-tr-3xl skew-box">
                         <span class="unskew block font-sport text-2xl">ASTANA</span>
                     </div>
@@ -290,7 +286,7 @@
             </div>
             
             <div class="border-t border-white/5 pt-8 text-center text-xs text-gray-600 font-mono">
-                <p>&copy; 2025 Astana Jas Football School.</p>
+                <p>© 2025 Astana Jas Football School.</p>
             </div>
         </div>
     </footer>
@@ -303,13 +299,23 @@
     <script>
         AOS.init({ once: true, duration: 800, offset: 50 });
 
+        // Исправленная логика Preloader (таймер 2 сек, если картинки не грузятся)
         window.addEventListener('load', () => {
+            hidePreloader();
+        });
+
+        // Fail-safe таймер
+        setTimeout(() => {
+            hidePreloader();
+        }, 2000);
+
+        function hidePreloader() {
             const preloader = document.getElementById('preloader');
-            setTimeout(() => {
+            if (preloader) {
                 preloader.style.opacity = '0';
                 setTimeout(() => { preloader.style.display = 'none'; }, 500);
-            }, 1000);
-        });
+            }
+        }
 
         function toggleMenu() {
             document.getElementById('mobile-menu').classList.toggle('open');
