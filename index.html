@@ -44,8 +44,6 @@
 
     <style>
         body { background-color: #FFFFFF; color: #111111; overflow-x: hidden; width: 100%; position: relative; }
-        
-        /* Исправление горизонтального скролла на мобильных */
         html, body { max-width: 100%; overflow-x: hidden; }
 
         /* Скроллбар */
@@ -73,7 +71,11 @@
             transform: translateY(-2px);
         }
 
-        /* Leaflet Map Marker */
+        /* Тень для текста на видео */
+        .text-shadow-hero {
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
         .football-marker {
             background-image: url('https://cdn-icons-png.flaticon.com/512/53/53283.png');
             background-size: cover; width: 50px; height: 50px;
@@ -146,30 +148,32 @@
         </div>
     </div>
 
-    <header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-gray-100">
+    <header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-black">
         <div class="absolute inset-0 z-0">
-            <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
+            <video autoplay muted loop playsinline class="absolute w-full h-full object-cover object-top opacity-100">
                 <source src="video/hero.mp4" type="video/mp4">
             </video>
-            <div class="img-box absolute inset-0 z-[-1] border-none bg-gray-200">
+            
+            <div class="img-box absolute inset-0 z-[-1] border-none bg-gray-900 text-white">
                 <i class="fas fa-video text-4xl"></i> video/hero.mp4
             </div>
-            <div class="absolute inset-0 bg-white/80 backdrop-blur-[2px]"></div>
+            
+            <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10 pt-10 text-center">
-            <span class="inline-block py-2 px-4 border-2 border-brand-black text-brand-black text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-6 bg-white shadow-lg" data-aos="fade-down">
+            <span class="inline-block py-2 px-4 border border-white text-white text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-6 backdrop-blur-md bg-black/30 shadow-lg" data-aos="fade-down">
                 Season 2025/2026
             </span>
-            <h1 class="font-header font-bold text-6xl md:text-[9vw] leading-[0.9] uppercase text-brand-black mb-6" data-aos="zoom-in">
-                Astana <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-600">Jas</span>
+            <h1 class="font-header font-bold text-6xl md:text-[9vw] leading-[0.9] uppercase text-white mb-6 text-shadow-hero" data-aos="zoom-in">
+                Astana <span class="text-brand-gold">Jas</span>
             </h1>
-            <p class="text-lg md:text-2xl text-gray-700 font-light max-w-2xl mx-auto mb-10" data-aos="fade-up">
+            <p class="text-lg md:text-2xl text-gray-100 font-light max-w-2xl mx-auto mb-10 text-shadow-hero" data-aos="fade-up">
                 Воспитываем характер. Создаем чемпионов. <br>
-                <span class="font-bold text-brand-black">История большого футбола начинается здесь.</span>
+                <span class="font-bold text-white">История большого футбола начинается здесь.</span>
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
-                <a href="#locations" class="btn-main bg-brand-black text-white px-10 py-4 font-header text-xl uppercase tracking-wider hover:bg-brand-gold hover:text-black shadow-xl">
+                <a href="#locations" class="btn-main bg-brand-gold text-brand-black px-10 py-4 font-header text-xl uppercase tracking-wider hover:bg-white hover:text-black shadow-xl">
                     Найти школу
                 </a>
             </div>
@@ -201,10 +205,8 @@
                 <div class="order-1 lg:order-2 relative w-full" data-aos="fade-left">
                     <div class="relative p-3 md:p-4">
                         <div class="absolute inset-0 bg-brand-gold transform rotate-2 rounded-3xl z-0"></div>
-                        
                         <div class="relative bg-white p-2 rounded-3xl shadow-frame z-10">
                             <img src="images/loc1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-auto rounded-2xl block relative z-20" alt="Команда">
-                            
                             <div class="img-box rounded-2xl bg-gray-100 z-10">
                                 <i class="fas fa-camera text-3xl mb-2"></i>
                                 <span>images/loc1.jpg</span>
