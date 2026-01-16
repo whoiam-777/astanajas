@@ -107,7 +107,9 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-4 group">
                 <div class="w-12 h-12 relative shrink-0">
-                    <img src="images/logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain" alt="Logo">
+                    <img src="images/logo.png" 
+                         onerror="this.src='logo.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                         class="w-full h-full object-contain" alt="Logo">
                     <div class="img-box rounded-full" style="display:none; border-radius: 50%;"><i class="fas fa-shield-alt text-xs"></i></div>
                 </div>
                 <div class="flex flex-col">
@@ -206,7 +208,7 @@
                     <div class="relative p-3 md:p-4">
                         <div class="absolute inset-0 bg-brand-gold transform rotate-2 rounded-3xl z-0"></div>
                         <div class="relative bg-white p-2 rounded-3xl shadow-frame z-10">
-                            <img src="images/loc1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-auto rounded-2xl block relative z-20" alt="Команда">
+                            <img src="images/loc1.jpg" onerror="this.src='loc1.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" class="w-full h-auto rounded-2xl block relative z-20" alt="Команда">
                             <div class="img-box rounded-2xl bg-gray-100 z-10">
                                 <i class="fas fa-camera text-3xl mb-2"></i>
                                 <span>images/loc1.jpg</span>
@@ -273,7 +275,7 @@
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 min-h-[300px]">
                          <img src="images/kit.jpg" 
-                              onerror="this.src='images/kit.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                              onerror="this.src='kit.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
                               class="w-full h-auto object-contain" 
                               alt="Дизайн Формы">
                          
@@ -329,7 +331,10 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
                     <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <img src="images/coach1.jpg" 
+                             onerror="this.src='coach1.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" 
+                             alt="Coach">
                         <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach1.jpg</span></div>
                     </div>
                     <div class="p-6">
@@ -340,7 +345,10 @@
 
                 <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
                     <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach2.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <img src="images/coach2.jpg" 
+                             onerror="this.src='coach2.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" 
+                             alt="Coach">
                         <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach2.jpg</span></div>
                     </div>
                     <div class="p-6">
@@ -351,7 +359,10 @@
 
                 <div class="group bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-100">
                     <div class="relative h-[450px] w-full overflow-hidden">
-                        <img src="images/coach3.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <img src="images/coach3.jpg" 
+                             onerror="this.src='coach3.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" 
+                             alt="Coach">
                         <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach3.jpg</span></div>
                     </div>
                     <div class="p-6">
@@ -369,8 +380,8 @@
             <div class="flex flex-wrap justify-center items-center gap-12">
                 <div class="w-40 h-20 relative flex justify-center items-center">
                     <img src="images/tehpro.png" 
-                         onerror="this.src='images/tehpro.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
-                         class="w-full h-full object-contain grayscale hover:grayscale-0 transition" 
+                         onerror="this.src='tehpro.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                         class="w-full h-full object-contain transition hover:scale-110" 
                          alt="Tehpro">
                     <div class="img-box border-none bg-white text-xs text-red-500 hidden flex-col items-center justify-center absolute inset-0">
                         <i class="fas fa-times mb-1"></i> Нет tehpro.png
@@ -379,8 +390,8 @@
                 
                 <div class="w-40 h-20 relative flex justify-center items-center">
                     <img src="images/zhenis.png" 
-                         onerror="this.src='images/zhenis.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
-                         class="w-full h-full object-contain grayscale hover:grayscale-0 transition" 
+                         onerror="this.src='zhenis.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" 
+                         class="w-full h-full object-contain transition hover:scale-110" 
                          alt="Zhenis">
                     <div class="img-box border-none bg-white text-xs text-red-500 hidden flex-col items-center justify-center absolute inset-0">
                         <i class="fas fa-times mb-1"></i> Нет zhenis.png
@@ -430,8 +441,10 @@
         <div class="container mx-auto px-6 text-center">
             <div class="flex flex-col items-center gap-4 mb-8">
                 <div class="w-10 h-10 relative">
-                     <img src="images/logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain brightness-0 invert" alt="Logo">
-                     <div class="img-box bg-transparent border-none text-white">L</div>
+                     <img src="images/logo.png" onerror="this.src='logo.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex'}" class="w-full h-full object-contain brightness-0 invert" alt="Logo">
+                     <div class="img-box bg-transparent border-none text-white">
+                         <i class="fas fa-shield-alt text-2xl"></i>
+                     </div>
                 </div>
                 <span class="font-header text-2xl uppercase tracking-widest">Astana Jas</span>
             </div>
