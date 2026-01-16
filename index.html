@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASTANA JAS | Elite Football Academy</title>
-    <meta name="description" content="Профессиональная футбольная школа в Астане. Набор детей от 4 до 16 лет.">
+    <meta name="description" content="Профессиональная футбольная школа в Астане.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -28,16 +25,13 @@
                     },
                     colors: { 
                         brand: {
-                            gold: '#FFD700',      /* Золото */
-                            black: '#111111',     /* Черный текст */
-                            gray: '#F8F9FA',      /* Светлый фон */
-                            darkgray: '#343A40'   /* Темно-серый */
+                            gold: '#FFD700', 
+                            black: '#111111', 
+                            gray: '#F8F9FA'
                         }
                     },
                     boxShadow: {
-                        'card': '0 10px 30px rgba(0,0,0,0.05)',
-                        'hover': '0 20px 40px rgba(255, 215, 0, 0.15)',
-                        'frame': '0 20px 40px rgba(0,0,0,0.2)', /* Тень для рамки */
+                        'frame': '0 10px 30px rgba(0,0,0,0.15)',
                     },
                     animation: {
                         'spin-slow': 'spin 12s linear infinite',
@@ -49,154 +43,89 @@
     </script>
 
     <style>
-        /* Базовые настройки */
-        body { 
-            background-color: #FFFFFF; 
-            color: #111111; 
-            overflow-x: hidden; 
-        }
+        body { background-color: #FFFFFF; color: #111111; overflow-x: hidden; width: 100%; position: relative; }
         
-        /* Скроллбар */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #fff; }
-        ::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 0px; }
-        ::-webkit-scrollbar-thumb:hover { background: #000; }
+        /* Исправление горизонтального скролла на мобильных */
+        html, body { max-width: 100%; overflow-x: hidden; }
 
-        /* Плейсхолдеры (Пустые рамки) */
+        /* Скроллбар */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff; }
+        ::-webkit-scrollbar-thumb { background: #FFD700; }
+
+        /* Плейсхолдеры */
         .img-box {
             width: 100%; height: 100%;
             background-color: #F3F4F6;
             border: 1px dashed #9CA3AF;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            color: #6B7280; 
-            font-family: monospace; 
-            font-size: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 10; /* Поверх фото */
+            color: #6B7280; font-family: monospace; font-size: 12px;
+            position: absolute; top: 0; left: 0; z-index: 5;
         }
-        .img-box:hover { 
-            border-color: #FFD700; 
-            background-color: #FFFBEB;
-            color: #000;
-        }
-        .img-box i { font-size: 32px; margin-bottom: 10px; opacity: 0.5; }
-        .img-box span { font-weight: bold; letter-spacing: 1px; }
 
-        /* Эффекты для кнопок */
         .btn-main {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            position: relative; overflow: hidden; transition: all 0.4s ease;
             clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
         }
         .btn-main:hover {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
         }
 
-        /* Маркер карты (Мяч) */
+        /* Leaflet Map Marker */
         .football-marker {
             background-image: url('https://cdn-icons-png.flaticon.com/512/53/53283.png');
-            background-size: cover;
-            width: 50px; height: 50px;
+            background-size: cover; width: 50px; height: 50px;
             filter: drop-shadow(0 5px 5px rgba(0,0,0,0.4));
             transition: transform 0.2s;
-        }
-        .football-marker:hover { transform: scale(1.2); }
-
-        /* Текст с обводкой (Outline Text) */
-        .text-outline {
-            color: transparent;
-            -webkit-text-stroke: 1px #E5E7EB;
-        }
-        .text-outline-dark {
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(0,0,0,0.1);
-        }
-
-        /* Анимация полос */
-        .striped-bg {
-            background: repeating-linear-gradient(
-                45deg,
-                #ffffff,
-                #ffffff 10px,
-                #f8f9fa 10px,
-                #f8f9fa 20px
-            );
         }
     </style>
 </head>
 <body class="font-body antialiased">
 
     <div id="preloader" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center transition-opacity duration-700">
-        <div class="relative">
-            <i class="fas fa-futbol text-6xl text-brand-black animate-spin-slow"></i>
-            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-2 bg-black/10 rounded-full blur-sm"></div>
-        </div>
-        <h2 class="mt-8 font-header text-4xl font-bold uppercase tracking-widest text-brand-black">Astana Jas</h2>
-        <div class="mt-2 h-1 w-32 bg-gray-100 rounded-full overflow-hidden">
-            <div class="h-full bg-brand-gold w-0 animate-[width_2s_ease-in-out_forwards]" style="width: 100%"></div>
-        </div>
+        <i class="fas fa-futbol text-6xl text-brand-black animate-spin-slow"></i>
+        <h2 class="mt-6 font-header text-3xl font-bold uppercase tracking-widest text-brand-black">Astana Jas</h2>
     </div>
 
     <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
         <div class="hidden md:block bg-brand-black text-white text-xs py-2">
             <div class="container mx-auto px-6 flex justify-between items-center">
                 <div class="flex gap-6 opacity-80">
-                    <span><i class="fas fa-map-marker-alt text-brand-gold mr-2"></i> Астана, Школа-лицей №11 / №71</span>
-                    <span><i class="far fa-clock text-brand-gold mr-2"></i> Ежедневно 09:00 - 21:00</span>
+                    <span><i class="fas fa-map-marker-alt text-brand-gold mr-2"></i> Астана</span>
+                    <span><i class="far fa-clock text-brand-gold mr-2"></i> 09:00 - 21:00</span>
                 </div>
                 <div class="flex gap-4">
-                    <a href="#" class="hover:text-brand-gold transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-brand-gold transition"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://wa.me/77019744464" class="hover:text-brand-gold transition"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/77019744464" class="hover:text-brand-gold"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            
             <a href="#" class="flex items-center gap-4 group">
-                <div class="w-14 h-14 relative">
+                <div class="w-12 h-12 relative shrink-0">
                     <img src="images/logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain" alt="Logo">
-                    <div class="img-box rounded-full" style="display:none; border-radius: 50%;">
-                        <i class="fas fa-shield-alt text-xs"></i>
-                    </div>
+                    <div class="img-box rounded-full" style="display:none; border-radius: 50%;"><i class="fas fa-shield-alt text-xs"></i></div>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-header text-2xl font-bold uppercase tracking-tighter leading-none text-black group-hover:text-brand-gold transition">Astana Jas</span>
-                    <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">Football School</span>
+                    <span class="font-header text-xl md:text-2xl font-bold uppercase tracking-tighter leading-none text-black">Astana Jas</span>
+                    <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">Football School</span>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center gap-10 font-header text-lg font-medium uppercase tracking-wide">
-                <a href="#about" class="relative group py-2">
-                    <span>О клубе</span>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#process" class="relative group py-2">
-                    <span>Методика</span>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#team" class="relative group py-2">
-                    <span>Тренеры</span>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#locations" class="relative group py-2">
-                    <span>Контакты</span>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
-                </a>
+            <div class="hidden lg:flex items-center gap-8 font-header text-lg font-medium uppercase tracking-wide">
+                <a href="#about" class="hover:text-brand-gold transition">О клубе</a>
+                <a href="#process" class="hover:text-brand-gold transition">Методика</a>
+                <a href="#team" class="hover:text-brand-gold transition">Тренеры</a>
+                <a href="#locations" class="hover:text-brand-gold transition">Контакты</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="https://wa.me/77019744464" class="hidden md:flex btn-main bg-brand-black text-white px-8 py-3 font-header text-lg uppercase tracking-wider hover:bg-brand-gold hover:text-black items-center gap-2">
-                    <i class="fas fa-paper-plane text-sm"></i> Записаться
+                <a href="https://wa.me/77019744464" class="hidden md:flex btn-main bg-brand-black text-white px-6 py-2 font-header text-lg uppercase tracking-wider hover:bg-brand-gold hover:text-black items-center gap-2">
+                    Записаться
                 </a>
-                <button onclick="toggleMenu()" class="lg:hidden text-3xl text-brand-black hover:text-brand-gold transition p-2">
+                <button onclick="toggleMenu()" class="lg:hidden text-3xl text-brand-black p-2">
                     <i class="fas fa-bars" id="menu-icon"></i>
                 </button>
             </div>
@@ -204,144 +133,82 @@
     </nav>
 
     <div id="mobile-menu" class="fixed inset-0 z-40 bg-white translate-x-full transition-transform duration-500 flex flex-col pt-32 px-8">
-        <div class="flex flex-col gap-6 font-header text-4xl uppercase font-bold text-brand-black">
-            <a href="#about" onclick="toggleMenu()" class="hover:text-brand-gold transition translate-x-10 opacity-0 animate-[slideIn_0.5s_forwards_0.1s]">О Клубе</a>
-            <a href="#process" onclick="toggleMenu()" class="hover:text-brand-gold transition translate-x-10 opacity-0 animate-[slideIn_0.5s_forwards_0.2s]">Методика</a>
-            <a href="#team" onclick="toggleMenu()" class="hover:text-brand-gold transition translate-x-10 opacity-0 animate-[slideIn_0.5s_forwards_0.3s]">Тренеры</a>
-            <a href="#locations" onclick="toggleMenu()" class="hover:text-brand-gold transition translate-x-10 opacity-0 animate-[slideIn_0.5s_forwards_0.4s]">Локации</a>
+        <div class="flex flex-col gap-6 font-header text-3xl uppercase font-bold text-brand-black">
+            <a href="#about" onclick="toggleMenu()">О Клубе</a>
+            <a href="#process" onclick="toggleMenu()">Методика</a>
+            <a href="#team" onclick="toggleMenu()">Тренеры</a>
+            <a href="#locations" onclick="toggleMenu()">Локации</a>
         </div>
-        
-        <div class="mt-auto mb-10 space-y-6">
-            <div class="h-px w-full bg-gray-200"></div>
-            <div>
-                <p class="text-xs text-gray-400 uppercase font-bold tracking-widest mb-2">Связаться с нами</p>
-                <a href="tel:+77019744464" class="block font-header text-3xl text-brand-black">+7 701 974 44 64</a>
-            </div>
+        <div class="mt-auto mb-10">
             <a href="https://wa.me/77019744464" class="btn-main w-full py-4 bg-brand-gold text-black font-header uppercase text-xl text-center block rounded-none">
                 WhatsApp
             </a>
         </div>
     </div>
 
-    <header class="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-gray-100">
+    <header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-gray-100">
         <div class="absolute inset-0 z-0">
             <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
                 <source src="video/hero.mp4" type="video/mp4">
             </video>
-            
-            <div class="img-box absolute inset-0 z-[-1] opacity-100 border-none bg-gray-200">
-                <i class="fas fa-video text-6xl"></i>
-                <span class="text-2xl mt-4">video/hero.mp4</span>
-                <p class="mt-2 text-sm">(Ваше видео на задний фон)</p>
+            <div class="img-box absolute inset-0 z-[-1] border-none bg-gray-200">
+                <i class="fas fa-video text-4xl"></i> video/hero.mp4
             </div>
-
             <div class="absolute inset-0 bg-white/80 backdrop-blur-[2px]"></div>
-            
-            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cross-stripes.png')] opacity-20"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 pt-20">
-            <div class="max-w-5xl mx-auto text-center">
-                
-                <div data-aos="fade-down" data-aos-duration="1000">
-                    <span class="inline-block py-2 px-6 border-2 border-brand-black text-brand-black text-sm font-bold uppercase tracking-[0.3em] mb-8 bg-white shadow-lg">
-                        <i class="fas fa-star text-brand-gold mr-2"></i> Season 2025/2026
-                    </span>
-                </div>
-
-                <h1 class="font-header font-bold text-[10vw] leading-[0.8] uppercase text-brand-black mb-8 drop-shadow-sm" data-aos="zoom-in" data-aos-duration="1200">
-                    Astana <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-600">Jas</span>
-                </h1>
-
-                <p class="text-xl md:text-3xl text-gray-700 font-light max-w-3xl mx-auto mb-12 leading-normal" data-aos="fade-up" data-aos-delay="200">
-                    Воспитываем характер. Создаем чемпионов. <br>
-                    <span class="font-bold text-brand-black">История большого футбола начинается здесь.</span>
-                </p>
-
-                <div class="flex flex-col md:flex-row justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#locations" class="btn-main bg-brand-black text-white px-12 py-5 font-header text-2xl uppercase tracking-wider hover:bg-brand-gold hover:text-black shadow-xl">
-                        Найти школу
-                    </a>
-                    <a href="#program" class="btn-main bg-white text-brand-black border-2 border-brand-black px-12 py-5 font-header text-2xl uppercase tracking-wider hover:bg-brand-black hover:text-white">
-                        Программы
-                    </a>
-                </div>
-
+        <div class="container mx-auto px-6 relative z-10 pt-10 text-center">
+            <span class="inline-block py-2 px-4 border-2 border-brand-black text-brand-black text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-6 bg-white shadow-lg" data-aos="fade-down">
+                Season 2025/2026
+            </span>
+            <h1 class="font-header font-bold text-6xl md:text-[9vw] leading-[0.9] uppercase text-brand-black mb-6" data-aos="zoom-in">
+                Astana <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-600">Jas</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-700 font-light max-w-2xl mx-auto mb-10" data-aos="fade-up">
+                Воспитываем характер. Создаем чемпионов. <br>
+                <span class="font-bold text-brand-black">История большого футбола начинается здесь.</span>
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="#locations" class="btn-main bg-brand-black text-white px-10 py-4 font-header text-xl uppercase tracking-wider hover:bg-brand-gold hover:text-black shadow-xl">
+                    Найти школу
+                </a>
             </div>
         </div>
-
-        <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-brand-black animate-bounce-slow hover:text-brand-gold transition cursor-pointer">
-            <span class="text-xs font-bold uppercase tracking-widest writing-vertical">Scroll</span>
-            <i class="fas fa-arrow-down text-xl"></i>
-        </a>
     </header>
 
-    <section class="py-20 bg-white border-b border-gray-100 relative z-20 -mt-10 mx-4 md:mx-10 rounded-2xl shadow-2xl">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 divide-x divide-gray-100">
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="0">
-                    <i class="fas fa-flag text-brand-gold text-3xl mb-4 group-hover:scale-110 transition"></i>
-                    <h3 class="font-header text-5xl font-bold text-brand-black mb-1">2025</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">Основание</p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-map-marked-alt text-brand-gold text-3xl mb-4 group-hover:scale-110 transition"></i>
-                    <h3 class="font-header text-5xl font-bold text-brand-black mb-1">2</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">Локации</p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-users text-brand-gold text-3xl mb-4 group-hover:scale-110 transition"></i>
-                    <h3 class="font-header text-5xl font-bold text-brand-black mb-1">PRO</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">Тренеры</p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-trophy text-brand-gold text-3xl mb-4 group-hover:scale-110 transition"></i>
-                    <h3 class="font-header text-5xl font-bold text-brand-black mb-1">UEFA</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">Стандарты</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-32 bg-brand-gray striped-bg overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-5 gap-12 items-center">
+    <section id="about" class="py-20 bg-brand-gray overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
                 
-                <div class="lg:col-span-2" data-aos="fade-right">
-                    <h4 class="text-brand-gold font-bold uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-                        <span class="w-10 h-1 bg-brand-gold"></span> Философия
+                <div data-aos="fade-right" class="order-2 lg:order-1">
+                    <h4 class="text-brand-gold font-bold uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
+                        <span class="w-8 h-1 bg-brand-gold"></span> Философия
                     </h4>
-                    <h2 class="font-header text-5xl md:text-7xl font-bold uppercase text-brand-black leading-[0.9] mb-8">
-                        Больше чем <br> <span class="text-outline-dark">Просто Игра</span>
+                    <h2 class="font-header text-4xl md:text-6xl font-bold uppercase text-brand-black leading-tight mb-6">
+                        Больше чем <br> Просто Игра
                     </h2>
-                    
-                    <p class="text-lg text-gray-600 leading-relaxed mb-8 border-l-4 border-brand-gold pl-6">
+                    <p class="text-base md:text-lg text-gray-600 leading-relaxed mb-8 border-l-4 border-brand-gold pl-6">
                         Быть лучшим футбольным клубом, несущим историю казахстанского футбола. Мы создаем комплексные условия для прогресса и имеем культурную ценность для общества.
                     </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
-                        <div class="bg-white p-6 shadow-card hover:shadow-hover transition duration-300 rounded-xl">
-                            <i class="fas fa-heart text-3xl text-brand-black mb-4"></i>
-                            <h4 class="font-header text-xl uppercase font-bold mb-2">Ценности</h4>
-                            <p class="text-sm text-gray-500">Принципы честной борьбы. Высокие стандарты. Семья.</p>
-                        </div>
-                        <div class="bg-white p-6 shadow-card hover:shadow-hover transition duration-300 rounded-xl">
-                            <i class="fas fa-globe text-3xl text-brand-black mb-4"></i>
-                            <h4 class="font-header text-xl uppercase font-bold mb-2">Общество</h4>
-                            <p class="text-sm text-gray-500">Возродить любовь и причастность к клубу.</p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-white p-5 shadow-sm rounded-xl border border-gray-100">
+                            <h4 class="font-header text-lg uppercase font-bold mb-1"><i class="fas fa-heart text-brand-black mr-2"></i>Ценности</h4>
+                            <p class="text-sm text-gray-500">Принципы честной борьбы. Семья.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-3 relative w-full h-[500px] lg:h-[600px]" data-aos="fade-left">
-                    <div class="absolute inset-0 bg-brand-gold/20 rounded-3xl transform rotate-3 scale-105 -z-10"></div>
-                    
-                    <div class="relative h-full w-full rounded-3xl border-4 border-white shadow-frame overflow-hidden group">
-                        <img src="images/loc1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover transition duration-700" alt="Training">
-                        <div class="img-box bg-gray-100">
-                            <i class="fas fa-camera"></i>
-                            <span>images/loc1.jpg</span>
-                            <p>Фото с тренировки</p>
+                <div class="order-1 lg:order-2 relative w-full" data-aos="fade-left">
+                    <div class="relative p-3 md:p-4">
+                        <div class="absolute inset-0 bg-brand-gold transform rotate-2 rounded-3xl z-0"></div>
+                        
+                        <div class="relative bg-white p-2 rounded-3xl shadow-frame z-10">
+                            <img src="images/loc1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-auto rounded-2xl block relative z-20" alt="Команда">
+                            
+                            <div class="img-box rounded-2xl bg-gray-100 z-10">
+                                <i class="fas fa-camera text-3xl mb-2"></i>
+                                <span>images/loc1.jpg</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -350,334 +217,183 @@
         </div>
     </section>
 
-    <section id="process" class="py-32 bg-white relative">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="font-header text-6xl md:text-7xl font-bold uppercase text-brand-black mb-4">Система <span class="text-brand-gold">Обучения</span></h2>
-                <div class="w-24 h-1 bg-brand-black mx-auto"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group relative bg-white border border-gray-200 p-10 hover:border-brand-gold transition duration-500 overflow-hidden" data-aos="fade-up" data-aos-delay="0">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
-                        <i class="fas fa-seedling text-9xl"></i>
-                    </div>
-                    
-                    <span class="block text-6xl font-header font-bold text-gray-200 mb-6 group-hover:text-brand-gold transition">01</span>
-                    <h3 class="font-header text-4xl uppercase font-bold mb-4">Start</h3>
-                    
-                    <div class="flex gap-2 mb-6">
-                        <span class="px-3 py-1 bg-gray-100 text-xs font-bold uppercase rounded">5-7 лет</span>
-                        <span class="px-3 py-1 bg-brand-gold text-black text-xs font-bold uppercase rounded">База</span>
-                    </div>
-                    
-                    <p class="text-gray-500 mb-8 leading-relaxed">
-                        Координация, техника, дисциплина. Прививаем любовь к игре через упражнения.
-                    </p>
-                    
-                    <a href="https://wa.me/77019744464" class="inline-flex items-center text-brand-black font-bold uppercase tracking-wider hover:text-brand-gold transition">
-                        Подробнее <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <div class="group relative bg-brand-black text-white p-10 transform md:-translate-y-6 shadow-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute top-0 right-0 p-4 opacity-10">
-                        <i class="fas fa-chart-line text-9xl text-white"></i>
-                    </div>
-                    
-                    <span class="block text-6xl font-header font-bold text-brand-gold mb-6">02</span>
-                    <h3 class="font-header text-4xl uppercase font-bold mb-4 text-white">Progress</h3>
-                    
-                    <div class="flex gap-2 mb-6">
-                        <span class="px-3 py-1 bg-gray-800 text-xs font-bold uppercase rounded">8-10 лет</span>
-                        <span class="px-3 py-1 bg-brand-gold text-black text-xs font-bold uppercase rounded">Развитие</span>
-                    </div>
-                    
-                    <p class="text-gray-400 mb-8 leading-relaxed">
-                        Взаимодействия, скорость принятия решений, основы тактики. Индивидуальный подход.
-                    </p>
-                    
-                    <a href="https://wa.me/77019744464" class="btn-main w-full py-4 bg-brand-gold text-black text-center font-bold uppercase tracking-wider block">
-                        Записаться
-                    </a>
-                </div>
-
-                <div class="group relative bg-white border border-gray-200 p-10 hover:border-brand-gold transition duration-500 overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
-                        <i class="fas fa-trophy text-9xl"></i>
-                    </div>
-                    
-                    <span class="block text-6xl font-header font-bold text-gray-200 mb-6 group-hover:text-brand-gold transition">03</span>
-                    <h3 class="font-header text-4xl uppercase font-bold mb-4">Team</h3>
-                    
-                    <div class="flex gap-2 mb-6">
-                        <span class="px-3 py-1 bg-gray-100 text-xs font-bold uppercase rounded">11-14 лет</span>
-                        <span class="px-3 py-1 bg-brand-gold text-black text-xs font-bold uppercase rounded">Профи</span>
-                    </div>
-                    
-                    <p class="text-gray-500 mb-8 leading-relaxed">
-                        Понимание ролей на поле, соревновательный опыт, физическая подготовка PRO-уровня.
-                    </p>
-                    
-                    <a href="https://wa.me/77019744464" class="inline-flex items-center text-brand-black font-bold uppercase tracking-wider hover:text-brand-gold transition">
-                        Подробнее <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="py-32 bg-gray-50 border-t border-gray-200">
+    <section id="process" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="font-header text-7xl md:text-9xl font-bold uppercase text-gray-200 mb-[-40px] md:mb-[-60px] relative z-0 text-center select-none">
-                The Squad
-            </h2>
-            <h3 class="font-header text-5xl md:text-6xl font-bold uppercase text-brand-black relative z-10 text-center mb-24">
+            <div class="text-center mb-16">
+                <h2 class="font-header text-4xl md:text-6xl font-bold uppercase text-brand-black mb-2">Система <span class="text-brand-gold">Обучения</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:border-brand-gold transition group">
+                    <span class="text-4xl font-header font-bold text-gray-200 group-hover:text-brand-gold">01</span>
+                    <h3 class="font-header text-3xl uppercase font-bold mb-3 mt-2">Start</h3>
+                    <div class="flex gap-2 mb-4">
+                        <span class="px-2 py-1 bg-white text-[10px] font-bold uppercase rounded border">5-7 лет</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-6">Координация, техника, дисциплина. Любовь к игре.</p>
+                </div>
+
+                <div class="bg-brand-black text-white p-8 rounded-2xl shadow-xl transform md:-translate-y-4">
+                    <span class="text-4xl font-header font-bold text-brand-gold">02</span>
+                    <h3 class="font-header text-3xl uppercase font-bold mb-3 mt-2 text-white">Progress</h3>
+                    <div class="flex gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-800 text-[10px] font-bold uppercase rounded border border-gray-700">8-10 лет</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-6">Взаимодействия, скорость решений, тактика.</p>
+                    <a href="https://wa.me/77019744464" class="block w-full py-3 bg-brand-gold text-black text-center font-bold uppercase rounded hover:bg-white transition">Записаться</a>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:border-brand-gold transition group">
+                    <span class="text-4xl font-header font-bold text-gray-200 group-hover:text-brand-gold">03</span>
+                    <h3 class="font-header text-3xl uppercase font-bold mb-3 mt-2">Team</h3>
+                    <div class="flex gap-2 mb-4">
+                        <span class="px-2 py-1 bg-white text-[10px] font-bold uppercase rounded border">11-14 лет</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-6">Соревновательный опыт, физика PRO-уровня.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <h3 class="font-header text-4xl md:text-5xl font-bold uppercase text-brand-black text-center mb-16">
                 Тренерский Штаб
             </h3>
             
-            <div class="grid md:grid-cols-3 gap-10">
-                
-                <div class="group" data-aos="fade-up">
-                    <div class="relative h-[550px] w-full bg-white shadow-xl overflow-hidden mb-6 border-b-4 border-brand-black">
-                        <img src="images/coach1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 transform group-hover:scale-105" alt="Coach">
-                        <div class="img-box bg-white">
-                            <i class="fas fa-user-tie"></i>
-                            <span>images/coach1.jpg</span>
-                        </div>
-                        
-                        <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent opacity-100">
-                             <span class="inline-block px-3 py-1 bg-brand-gold text-black text-xs font-bold uppercase mb-2">Главный тренер</span>
-                             <h4 class="font-header text-3xl uppercase text-white">Абугалиев <br>Чингиз</h4>
-                        </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative h-[450px] w-full overflow-hidden">
+                        <img src="images/coach1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach1.jpg</span></div>
                     </div>
-                    <div class="flex justify-between items-center px-2">
-                        <div class="text-sm font-bold text-gray-500 uppercase tracking-widest">Лицензия UEFA</div>
-                        <img src="https://flagcdn.com/w40/kz.png" alt="KZ" class="w-6 shadow-sm">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Главный тренер</span>
+                        <h4 class="font-header text-2xl uppercase mt-1">Абугалиев Чингиз</h4>
                     </div>
                 </div>
 
-                <div class="group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative h-[550px] w-full bg-white shadow-xl overflow-hidden mb-6 border-b-4 border-brand-black">
-                        <img src="images/coach2.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 transform group-hover:scale-105" alt="Coach">
-                        <div class="img-box bg-white">
-                            <i class="fas fa-user-tie"></i>
-                            <span>images/coach2.jpg</span>
-                        </div>
-                        
-                        <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent opacity-100">
-                             <span class="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold uppercase mb-2">Ассистент</span>
-                             <h4 class="font-header text-3xl uppercase text-white">Умеркулов <br>Имран</h4>
-                        </div>
+                <div class="group bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative h-[450px] w-full overflow-hidden">
+                        <img src="images/coach2.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach2.jpg</span></div>
                     </div>
-                    <div class="flex justify-between items-center px-2">
-                        <div class="text-sm font-bold text-gray-500 uppercase tracking-widest">Тактика</div>
-                        <img src="https://flagcdn.com/w40/kz.png" alt="KZ" class="w-6 shadow-sm">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Ассистент</span>
+                        <h4 class="font-header text-2xl uppercase mt-1">Умеркулов Имран</h4>
                     </div>
                 </div>
 
-                <div class="group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative h-[550px] w-full bg-white shadow-xl overflow-hidden mb-6 border-b-4 border-brand-black">
-                        <img src="images/coach3.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 transform group-hover:scale-105" alt="Coach">
-                        <div class="img-box bg-white">
-                            <i class="fas fa-user-tie"></i>
-                            <span>images/coach3.jpg</span>
-                        </div>
-                        
-                        <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent opacity-100">
-                             <span class="inline-block px-3 py-1 bg-green-600 text-white text-xs font-bold uppercase mb-2">Тренер Вратарей</span>
-                             <h4 class="font-header text-3xl uppercase text-white">Цыгановкин <br>Роман</h4>
-                        </div>
+                <div class="group bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative h-[450px] w-full overflow-hidden">
+                        <img src="images/coach3.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Coach">
+                        <div class="img-box bg-gray-200"><i class="fas fa-user"></i><span>images/coach3.jpg</span></div>
                     </div>
-                    <div class="flex justify-between items-center px-2">
-                        <div class="text-sm font-bold text-gray-500 uppercase tracking-widest">Goalkeeping</div>
-                        <img src="https://flagcdn.com/w40/kz.png" alt="KZ" class="w-6 shadow-sm">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-green-600 uppercase tracking-widest">Вратари</span>
+                        <h4 class="font-header text-2xl uppercase mt-1">Цыгановкин Роман</h4>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-white">
+    <section class="py-16 bg-white border-t">
         <div class="container mx-auto px-6 text-center">
-            <h3 class="font-header text-2xl uppercase text-gray-400 mb-12 tracking-[0.2em]">Official Partners</h3>
-            
-            <div class="flex flex-wrap justify-center items-center gap-20">
-                <div class="w-48 h-24 relative group" data-aos="zoom-in">
-                    <img src="images/tehpro.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition duration-500" alt="Partner">
-                    <div class="img-box bg-transparent border-none">
-                        <span>images/tehpro.png</span>
-                    </div>
+            <h3 class="font-header text-xl uppercase text-gray-400 mb-8 tracking-widest">Partners</h3>
+            <div class="flex flex-wrap justify-center items-center gap-12">
+                <div class="w-32 h-16 relative">
+                    <img src="images/tehpro.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain grayscale hover:grayscale-0 transition" alt="Tehpro">
+                    <div class="img-box border-none bg-white">tehpro.png</div>
                 </div>
-                
-                <div class="w-48 h-24 relative group" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="images/zhenis.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition duration-500" alt="Partner">
-                    <div class="img-box bg-transparent border-none">
-                        <span>images/zhenis.png</span>
-                    </div>
+                <div class="w-32 h-16 relative">
+                    <img src="images/zhenis.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain grayscale hover:grayscale-0 transition" alt="Zhenis">
+                    <div class="img-box border-none bg-white">zhenis.png</div>
                 </div>
-            </div>
-
-            <div class="mt-12 inline-block px-8 py-3 bg-gray-50 rounded-full border border-gray-200">
-                <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">
-                    <i class="fas fa-handshake text-brand-black mr-2"></i> Меморандум о сотрудничестве с ПФК «Жеңіс»
-                </p>
             </div>
         </div>
     </section>
 
-    <section id="locations" class="py-32 bg-brand-black text-white relative">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 h-full">
-                
-                <div class="lg:col-span-4 flex flex-col justify-center" data-aos="fade-right">
-                    <h2 class="font-header text-6xl uppercase mb-10 text-white">Контакты <br><span class="text-brand-gold">Клуба</span></h2>
-                    
-                    <div class="space-y-6 mb-12">
-                        <div class="p-6 bg-white/5 border border-white/10 rounded-lg hover:border-brand-gold transition cursor-pointer">
-                            <h3 class="font-header text-2xl uppercase mb-2">Школа №11</h3>
-                            <p class="text-gray-400 font-body text-sm flex items-center gap-2">
-                                <i class="fas fa-map-pin text-brand-gold"></i> им. Өзбекәлі Жәнібекова
-                            </p>
+    <section id="locations" class="py-20 bg-brand-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div data-aos="fade-right">
+                    <h2 class="font-header text-5xl uppercase mb-8">Контакты <span class="text-brand-gold">Клуба</span></h2>
+                    <div class="space-y-4 mb-8">
+                        <div class="p-5 border border-white/10 rounded-lg">
+                            <h3 class="font-header text-xl uppercase mb-1">Школа №11</h3>
+                            <p class="text-gray-400 text-sm">им. Өзбекәлі Жәнібекова</p>
                         </div>
-                        <div class="p-6 bg-white/5 border border-white/10 rounded-lg hover:border-brand-gold transition cursor-pointer">
-                            <h3 class="font-header text-2xl uppercase mb-2">Школа №71</h3>
-                            <p class="text-gray-400 font-body text-sm flex items-center gap-2">
-                                <i class="fas fa-map-pin text-brand-gold"></i> Астана, ул. Е-10
-                            </p>
+                        <div class="p-5 border border-white/10 rounded-lg">
+                            <h3 class="font-header text-xl uppercase mb-1">Школа №71</h3>
+                            <p class="text-gray-400 text-sm">Астана, ул. Е-10</p>
                         </div>
                     </div>
-
                     <div>
-                        <p class="text-xs text-brand-gold uppercase tracking-widest font-bold mb-2">Менеджер</p>
-                        <h4 class="font-header text-4xl mb-4">Руслан</h4>
-                        <a href="tel:+77019744464" class="text-2xl font-bold hover:text-brand-gold transition block mb-6">+7 701 974 44 64</a>
+                        <p class="text-xs text-brand-gold uppercase tracking-widest font-bold mb-1">Менеджер Руслан</p>
+                        <a href="tel:+77019744464" class="text-3xl font-header font-bold block mb-6">+7 701 974 44 64</a>
                         <a href="https://wa.me/77019744464" class="btn-main w-full py-4 bg-brand-gold text-black text-center font-header text-xl uppercase tracking-wider block">
                             Написать в WhatsApp
                         </a>
                     </div>
                 </div>
-
-                <div class="lg:col-span-8 h-[500px] lg:h-auto bg-white rounded-2xl overflow-hidden relative shadow-2xl" data-aos="fade-left">
+                <div class="h-[400px] bg-white rounded-2xl overflow-hidden relative shadow-2xl" data-aos="fade-left">
                     <div id="map" class="w-full h-full z-10"></div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-white pt-20 pb-10 border-t border-white/10">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-10 mb-16">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 relative">
-                         <img src="images/logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain brightness-0 invert" alt="Logo">
-                         <div class="img-box bg-transparent border-none text-white">LOGO</div>
-                    </div>
-                    <span class="font-header text-4xl uppercase tracking-widest">Astana Jas</span>
+    <footer class="bg-black text-white pt-12 pb-8 border-t border-white/10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col items-center gap-4 mb-8">
+                <div class="w-10 h-10 relative">
+                     <img src="images/logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-contain brightness-0 invert" alt="Logo">
+                     <div class="img-box bg-transparent border-none text-white">L</div>
                 </div>
-                
-                <div class="flex gap-6">
-                    <a href="#" class="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition duration-300">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="#" class="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition duration-300">
-                        <i class="fab fa-tiktok text-xl"></i>
-                    </a>
-                    <a href="https://wa.me/77019744464" class="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-black hover:border-brand-gold transition duration-300">
-                        <i class="fab fa-whatsapp text-xl"></i>
-                    </a>
-                </div>
+                <span class="font-header text-2xl uppercase tracking-widest">Astana Jas</span>
             </div>
-            
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between text-xs text-gray-500 font-bold uppercase tracking-widest">
-                <p>&copy; 2025 Astana Jas Football School.</p>
-                <p>Designed by Anuken</p>
-            </div>
+            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">&copy; 2025 Astana Jas. Designed by Anuken</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/77019744464" class="hidden md:flex fixed bottom-8 right-8 z-40 w-16 h-16 bg-[#25D366] rounded-full items-center justify-center text-white shadow-2xl hover:scale-110 transition animate-bounce-slow">
-        <i class="fab fa-whatsapp text-4xl"></i>
+    <a href="https://wa.me/77019744464" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 transition animate-bounce-slow">
+        <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <script>
-        // 1. Инициализация анимаций AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100,
-            easing: 'ease-out-cubic'
-        });
+        AOS.init({ duration: 800, once: true });
 
-        // 2. Логика Preloader (Исправленная)
         window.addEventListener('load', () => {
-            hidePreloader();
+            const pre = document.getElementById('preloader');
+            if(pre) { pre.style.opacity = '0'; setTimeout(() => { pre.style.display = 'none'; }, 700); }
         });
 
-        // Таймер безопасности (если контент грузится слишком долго)
-        setTimeout(() => {
-            hidePreloader();
-        }, 2500);
-
-        function hidePreloader() {
-            const preloader = document.getElementById('preloader');
-            if(preloader) {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 700);
-            }
-        }
-
-        // 3. Мобильное меню
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            
             if (menu.classList.contains('translate-x-full')) {
                 menu.classList.remove('translate-x-full');
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
             } else {
                 menu.classList.add('translate-x-full');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
             }
         }
 
-        // 4. Инициализация Карты (Leaflet)
-        // Координаты центра карты (между школами)
         const map = L.map('map', { scrollWheelZoom: false }).setView([51.13, 71.41], 12);
-
-        // Светлая тема карты (CartoDB Positron) - Идеально для белого сайта
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap &copy; CARTO',
-            maxZoom: 20
+            attribution: '&copy; CARTO', maxZoom: 20
         }).addTo(map);
 
-        // Кастомная иконка мяча
         const ballIcon = L.icon({
             iconUrl: 'https://cdn-icons-png.flaticon.com/512/53/53283.png',
-            iconSize: [45, 45],
-            iconAnchor: [22, 22],
-            popupAnchor: [0, -20],
+            iconSize: [40, 40], iconAnchor: [20, 20], popupAnchor: [0, -20],
             className: 'football-marker'
         });
 
-        // Маркеры школ
-        L.marker([51.152230, 71.404335], {icon: ballIcon})
-            .addTo(map)
-            .bindPopup('<div style="text-align:center; font-family:sans-serif;"><b>Школа №11</b><br>Астана</div>');
-
-        L.marker([51.104512, 71.402919], {icon: ballIcon})
-            .addTo(map)
-            .bindPopup('<div style="text-align:center; font-family:sans-serif;"><b>Школа №71</b><br>Астана</div>');
-
+        L.marker([51.152230, 71.404335], {icon: ballIcon}).addTo(map).bindPopup('<b>Школа №11</b>');
+        L.marker([51.104512, 71.402919], {icon: ballIcon}).addTo(map).bindPopup('<b>Школа №71</b>');
     </script>
 </body>
 </html>
