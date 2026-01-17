@@ -418,60 +418,42 @@
         </div>
     </section>
 
-    <section id="kit" class="py-12 md:py-24 bg-gray-50 border-t border-gray-100">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="text-center mb-10 md:mb-16" data-aos="fade-up">
-                <span class="text-brand-gold font-bold uppercase tracking-[0.2em] text-[10px] md:text-sm">Identity</span>
-                <h2 class="font-header text-3xl md:text-6xl font-bold uppercase text-brand-black mt-2">
+    <section id="kit" class="py-16 md:py-24 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <span class="text-brand-gold font-bold uppercase tracking-[0.2em] text-[10px]">Elite Gear</span>
+                <h2 class="font-header text-4xl md:text-6xl font-bold uppercase text-brand-black mt-2">
                     Клубная <span class="text-brand-gold">Форма</span>
                 </h2>
-                <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base">
-                    Профессиональная экипировка, объединяющая стиль и национальное наследие.
-                </p>
             </div>
 
-            <div class="max-w-5xl mx-auto bg-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl shadow-black/5 overflow-hidden border border-gray-100" data-aos="zoom-in">
-                <div class="grid lg:grid-cols-2 items-center">
+            <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+                <div class="bg-gray-50 rounded-[2rem] p-4 md:p-10 mb-8 cursor-pointer group relative overflow-hidden shadow-sm" onclick="openLightbox('images/kit.jpg?v=4')">
+                    <img src="images/kit.jpg?v=4" 
+                         onerror="this.src='https://via.placeholder.com/800x600?text=Jersey+Preview'" 
+                         class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_30px_60px_rgba(0,0,0,0.12)]" 
+                         alt="Jersey Design">
                     
-                    <div class="bg-white p-6 md:p-12 flex items-center justify-center group cursor-pointer relative" onclick="openLightbox('images/kit.jpg?v=3')">
-                        <div class="relative z-10 transition-transform duration-500 group-hover:scale-105 w-full">
-                            <img src="images/kit.jpg?v=3" 
-                                 onerror="this.src='https://via.placeholder.com/600x600?text=Jersey+Design'; this.parentElement.classList.add('bg-gray-100')" 
-                                 class="w-full h-auto object-contain drop-shadow-[0_15px_40px_rgba(0,0,0,0.1)]" 
-                                 alt="Дизайн Формы">
+                    <div class="absolute bottom-6 right-6 bg-white/80 backdrop-blur-md p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-expand-alt text-brand-black"></i>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-brand-black p-8 rounded-[1.5rem] text-white">
+                        <div class="flex items-center gap-4 mb-4">
+                            <i class="fas fa-medal text-brand-gold text-xl"></i>
+                            <h4 class="font-header text-lg uppercase font-bold tracking-wide">Дизайн</h4>
                         </div>
-                        <div class="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="bg-white/90 p-4 rounded-full shadow-lg">
-                                <i class="fas fa-search-plus text-brand-black text-xl"></i>
-                            </div>
-                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">Эксклюзивный паттерн с использованием национального казахского орнамента.</p>
                     </div>
 
-                    <div class="p-6 md:p-16 bg-brand-black text-white">
-                        <h3 class="font-header text-2xl md:text-3xl uppercase font-bold mb-8 md:mb-10 border-l-4 border-brand-gold pl-5">Преимущества</h3>
-                        <div class="space-y-8 md:space-y-10">
-                            
-                            <div class="flex items-start gap-4 md:gap-6">
-                                <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center shrink-0">
-                                    <i class="fas fa-medal text-brand-gold text-xl md:text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-header text-lg md:text-xl uppercase font-bold text-brand-gold mb-1">Уникальный дизайн</h4>
-                                    <p class="text-gray-400 text-xs md:text-sm leading-relaxed">Эксклюзивный паттерн с использованием национального казахского орнамента и государственной символики.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start gap-4 md:gap-6">
-                                <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center shrink-0">
-                                    <i class="fas fa-bolt text-brand-gold text-xl md:text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-header text-lg md:text-xl uppercase font-bold text-brand-gold mb-1">Технология PRO-Fit</h4>
-                                    <p class="text-gray-400 text-xs md:text-sm leading-relaxed">Полиэстер высшего качества с добавлением спандекса. Материал «дышит», отводит влагу и не сковывает движения.</p>
-                                </div>
-                            </div>
-
+                    <div class="bg-brand-black p-8 rounded-[1.5rem] text-white">
+                        <div class="flex items-center gap-4 mb-4">
+                            <i class="fas fa-bolt text-brand-gold text-xl"></i>
+                            <h4 class="font-header text-lg uppercase font-bold tracking-wide">Материал</h4>
                         </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">Высокотехнологичный полиэстер PRO-Fit: дышит и мгновенно отводит влагу.</p>
                     </div>
                 </div>
             </div>
