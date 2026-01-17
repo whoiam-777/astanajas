@@ -46,10 +46,12 @@
         body { background-color: #FFFFFF; color: #111111; overflow-x: hidden; width: 100%; position: relative; }
         html, body { max-width: 100%; overflow-x: hidden; }
 
+        /* Скроллбар */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #fff; }
         ::-webkit-scrollbar-thumb { background: #FFD700; }
 
+        /* Плейсхолдеры */
         .img-box {
             width: 100%; height: 100%;
             background-color: #F3F4F6;
@@ -70,7 +72,10 @@
             transform: translateY(-2px);
         }
 
-        .text-shadow-hero { text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
+        /* Тень для текста на видео */
+        .text-shadow-hero {
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
 
         .football-marker {
             background-image: url('https://cdn-icons-png.flaticon.com/512/53/53283.png');
@@ -116,8 +121,7 @@
 
             <div class="hidden lg:flex items-center gap-8 font-header text-lg font-medium uppercase tracking-wide">
                 <a href="#about" class="hover:text-brand-gold transition">О клубе</a>
-                <a href="#process" class="hover:text-brand-gold transition">Методика</a>
-                <a href="#kit" class="hover:text-brand-gold transition">Форма</a>
+                <a href="#programs" class="hover:text-brand-gold transition">Программы</a> <a href="#kit" class="hover:text-brand-gold transition">Форма</a>
                 <a href="#team" class="hover:text-brand-gold transition">Тренеры</a>
                 <a href="#locations" class="hover:text-brand-gold transition">Контакты</a>
             </div>
@@ -136,7 +140,7 @@
     <div id="mobile-menu" class="fixed inset-0 z-40 bg-white translate-x-full transition-transform duration-500 flex flex-col pt-32 px-8">
         <div class="flex flex-col gap-6 font-header text-3xl uppercase font-bold text-brand-black">
             <a href="#about" onclick="toggleMenu()">О Клубе</a>
-            <a href="#process" onclick="toggleMenu()">Методика</a>
+            <a href="#programs" onclick="toggleMenu()">Программы</a>
             <a href="#kit" onclick="toggleMenu()">Форма</a>
             <a href="#team" onclick="toggleMenu()">Тренеры</a>
             <a href="#locations" onclick="toggleMenu()">Локации</a>
@@ -255,7 +259,136 @@
         </div>
     </section>
 
-    <section id="kit" class="py-24 bg-gray-50 border-t border-gray-100">
+    <section id="programs" class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-header text-4xl md:text-5xl font-bold uppercase text-brand-black mb-4">Наши <span class="text-brand-gold">Программы</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Мы предлагаем тренировки по футболу для детей любого уровня подготовки. Подберем для вас удобное расписание.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col h-full border border-gray-100">
+                    <div class="h-64 relative bg-gray-200">
+                         <img src="images/prog_baby.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover">
+                         <div class="img-box bg-gray-200 border-dashed border-4 border-white flex flex-col items-center justify-center">
+                             <i class="fas fa-camera text-3xl text-gray-400 mb-2"></i>
+                             <span class="text-gray-500 font-bold">images/prog_baby.jpg</span>
+                         </div>
+                    </div>
+                    <div class="bg-brand-gold p-6 flex-grow flex flex-col justify-center text-center">
+                         <div class="border-2 border-brand-black/10 rounded-lg p-4 bg-brand-gold">
+                             <h3 class="font-header text-2xl uppercase font-bold mb-4">Программа baby start</h3>
+                             <ul class="text-sm font-bold text-brand-black space-y-2 mb-4">
+                                 <li>Набор в группы: 2017-19 г.р.</li>
+                                 <li>2 раза в неделю: Суббота-Воскресенье</li>
+                                 <li>Время: 11:00-12:00</li>
+                                 <li class="text-xs font-normal opacity-80">(В расписании возможны изменения)</li>
+                             </ul>
+                             <p class="text-xl font-header font-bold mt-auto">Стоимость 25.000 тг</p>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col h-full border border-gray-100">
+                    <div class="h-64 relative bg-gray-200">
+                         <img src="images/prog_weekend.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover">
+                         <div class="img-box bg-gray-200 border-dashed border-4 border-white flex flex-col items-center justify-center">
+                             <i class="fas fa-camera text-3xl text-gray-400 mb-2"></i>
+                             <span class="text-gray-500 font-bold">images/prog_weekend.jpg</span>
+                         </div>
+                    </div>
+                    <div class="bg-brand-gold p-6 flex-grow flex flex-col justify-center text-center">
+                         <div class="border-2 border-brand-black/10 rounded-lg p-4 bg-brand-gold">
+                             <h3 class="font-header text-2xl uppercase font-bold mb-4">Группы выходного дня</h3>
+                             <ul class="text-sm font-bold text-brand-black space-y-2 mb-4">
+                                 <li>Набор в группы: 2013-14 г.р., 2015-16 г.р.</li>
+                                 <li>2 раза в неделю: Суббота-Воскресенье</li>
+                                 <li>Время: 10:00-11:00</li>
+                                 <li class="text-xs font-normal opacity-80">(В расписании возможны изменения)</li>
+                             </ul>
+                             <p class="text-xl font-header font-bold mt-auto">Стоимость 25.000 тг</p>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col h-full border border-gray-100">
+                    <div class="h-64 relative bg-gray-200">
+                         <img src="images/prog_spec.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover">
+                         <div class="img-box bg-gray-200 border-dashed border-4 border-white flex flex-col items-center justify-center">
+                             <i class="fas fa-camera text-3xl text-gray-400 mb-2"></i>
+                             <span class="text-gray-500 font-bold">images/prog_spec.jpg</span>
+                         </div>
+                    </div>
+                    <div class="bg-brand-gold p-6 flex-grow flex flex-col justify-center text-center">
+                         <div class="border-2 border-brand-black/10 rounded-lg p-4 bg-brand-gold">
+                             <h3 class="font-header text-2xl uppercase font-bold mb-4">Спецгруппа</h3>
+                             <ul class="text-sm font-bold text-brand-black space-y-2 mb-4">
+                                 <li>Набор в группы: 2010-11, 2012-13, 2014-16 г.р.</li>
+                                 <li>3 раза в неделю + matchday</li>
+                                 <li>Участие в городских и республиканских соревнованиях</li>
+                             </ul>
+                             <p class="text-xl font-header font-bold mt-auto">Стоимость 30.000 тг</p>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col h-full border border-gray-100">
+                    <div class="h-64 relative bg-gray-200">
+                         <img src="images/prog_small.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover">
+                         <div class="img-box bg-gray-200 border-dashed border-4 border-white flex flex-col items-center justify-center">
+                             <i class="fas fa-camera text-3xl text-gray-400 mb-2"></i>
+                             <span class="text-gray-500 font-bold">images/prog_small.jpg</span>
+                         </div>
+                    </div>
+                    <div class="bg-brand-gold p-6 flex-grow flex flex-col justify-center text-center">
+                         <div class="border-2 border-brand-black/10 rounded-lg p-4 bg-brand-gold">
+                             <h3 class="font-header text-1xl uppercase font-bold mb-4 leading-tight">Индивидуальная тренировка в малых группах</h3>
+                             <ul class="text-sm font-bold text-brand-black space-y-2 mb-4 list-disc list-inside text-left">
+                                 <li>В группе не больше 5 человек</li>
+                                 <li>Грамотно выстроенный процесс</li>
+                                 <li>Разнообразие тренировок по технике</li>
+                                 <li>Высокоэффективные тренировки</li>
+                                 <li>8 тренировок в месяц</li>
+                             </ul>
+                             <p class="text-xl font-header font-bold mt-auto">Стоимость от 50.000 тг</p>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col border border-gray-100">
+                     <div class="h-80 relative bg-gray-200">
+                         <img src="images/prog_indiv.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="w-full h-full object-cover">
+                         <div class="img-box bg-gray-200 border-dashed border-4 border-white flex flex-col items-center justify-center">
+                             <i class="fas fa-camera text-3xl text-gray-400 mb-2"></i>
+                             <span class="text-gray-500 font-bold">images/prog_indiv.jpg</span>
+                         </div>
+                    </div>
+                    <div class="bg-brand-gold p-8 text-center">
+                        <div class="border-2 border-brand-black/10 rounded-lg p-6 bg-brand-gold max-w-2xl mx-auto">
+                            <h3 class="font-header text-3xl uppercase font-bold mb-6">Индивидуальная работа с тренером 1x1</h3>
+                            <div class="text-sm font-bold text-brand-black space-y-4 mb-6">
+                                <div>
+                                    <p class="uppercase mb-1 underline">Расписание:</p>
+                                    <p>Понедельник — Четверг: 11:30-12:30 и 15:30-16:30</p>
+                                    <p>Вторник-Четверг: 11:30-12:30 и 15:30-16:30</p>
+                                    <p>Среда-Пятница: 11:30-12:30 и 15:30-16:30</p>
+                                </div>
+                                <div>
+                                    <p class="uppercase mb-1 underline">Что входит в стоимость?</p>
+                                    <p>Работа над ошибками • Современный инвентарь</p>
+                                    <p>Хорошее поле (раздевалки, душевые) • Видеосъемка тренировок</p>
+                                </div>
+                            </div>
+                            <p class="text-2xl font-header font-bold">Стоимость : от 80.000 тг</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="kit" class="py-24 bg-white border-t border-gray-100">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-brand-gold font-bold uppercase tracking-[0.2em] text-sm">Identity</span>
@@ -306,7 +439,8 @@
     </section>
 
     <section id="team" class="py-20 bg-white border-t border-gray-200">
-        <div class="container mx-auto px-2 md:px-6"> <h3 class="font-header text-4xl md:text-5xl font-bold uppercase text-brand-black text-center mb-10">
+        <div class="container mx-auto px-2 md:px-6"> 
+            <h3 class="font-header text-4xl md:text-5xl font-bold uppercase text-brand-black text-center mb-10">
                 Тренерский Штаб
             </h3>
             
